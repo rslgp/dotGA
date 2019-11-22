@@ -1,5 +1,5 @@
 class Population{
-  //Dot[] dots;
+  Dot[] dots;
   
  fitnessFunction = 0;
  gen = 1;
@@ -70,12 +70,54 @@ void naturalSelection(){
 void calculateFitnessSum(){
     var fitnessSum = 0;
     for(let i = 0; i <dots.length();i++){
-        fitnessSum += dots[i].fitness();
+        fitnessSum += dots[i].fitness;
     }
 }
 
+//chooses dot from the population to return randomly(considering fitness)
 
+//this function works by randomly choosing a value between 0 and the sum of all the fitnesses
+//then go through all the dots and add their fitness to a running sum and if that sum is greater than the random value generated that dot is chosen
+//since dots with a higher fitness function add more to the running sum then they have a higher chance of being chosen
+  
+Dot selectParent(){
+    let rand = random(fitnessSum);
+    let runningSum = 0;
+    
+    for (let i =0;i <dots.length();i++){
+        runningSum += dots[i].fitness;
+        if(runningSum > rand){
+            return dots[i];
+        }
+    }
+    return null;
+}
 
+//mutaciona os cerebros dos pontos
+void mutateBabies(){
+    for (let i =1;i<dots.length();i++){
+        dots[i].brain.mutate();
+    }
+}
 
+//acha o ponto com a maior fitness e escolhe ele como o melhor ponto
+void setBestDot(){
+    let max = 0;
+    let maxIndex = 0;
+
+    for(let i = 0; i < dots.length();i++){
+        if(dots[i].fitness >max){
+            max = dots[i].fitness;
+            maxIndex = i;
+        }
+    }
+    bestDot = maxIndex;
+    //se esse ponto chegou ao final então resete o numero minimo de passos para chegar ao objetivo
+    if(dots[bestDot].reachedGoal{
+        minStep = dots[bestDot].brain.step;
+        console.log("step: ",minStep);
+    }
+
+}
 
 }
