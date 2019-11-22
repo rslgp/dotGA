@@ -1,4 +1,4 @@
-class Population {
+class Population {    
   Dot[] dots;
 
   float fitnessSum;

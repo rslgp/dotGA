@@ -6,10 +6,9 @@ class Population{
     this.fitnessFunction = 0;
     this.bestDot = 0;
     this.gen = 1;
-    dots = new Dot[size];
-    for (let a =0;a < size; a++){
-      dots[a]=new Dot();
-  }
+    for(let f = 0; f < size; f++){
+        this.dots.push(new Dot());
+    }
 }
 
 //Mostrar os pontos
