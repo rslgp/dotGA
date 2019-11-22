@@ -4,7 +4,7 @@ class Line{
 		this.p2 = new Point(pp2);
 	}
 
-	show{
+	show(){
 		ctx.moveTo(p1.x,p1.y);
 		fill(0);
 		ctx.lineTo(p2.x,p2.y);
