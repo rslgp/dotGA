@@ -50,26 +50,11 @@ class Dot {
     pos.add(vel);
   }
 
-//-----------------------------------------------------------------------------------------------------------------------
-/*
-boolean isColliding(Lines L){
-   percorrer retas em L:
-     se o dot atual colide com L[i], aceite (retorne true)
-   rejeite (retorne false)
-}
-*/
-
   //-------------------------------------------------------------------------------------------------------------------
   //calls the move function and check for collisions and stuff
-  void update(Lines L) {
+  void update() {
     if (!dead && !reachedGoal) {
       move();
-      /*
-        if(isColliding(L)){
-           dead=true; 
-        }
-      
-      */
       if (pos.x< 2|| pos.y<2 || pos.x>width-2 || pos.y>height -2) {//if near the edges of the window then kill it 
         dead = true;
       } else if (dist(pos.x, pos.y, goal.x, goal.y) < 5) {//if reached goal
