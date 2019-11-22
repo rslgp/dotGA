@@ -1,6 +1,6 @@
 Population test;
 PVector goal  = new PVector(400, 10);
-
+Lines obstacles;
 
 void setup() {
   size(800, 800); //size of the window
@@ -17,9 +17,7 @@ void draw() {
   ellipse(goal.x, goal.y, 10, 10);
 
   //draw obstacle(s)
-  fill(0, 0, 255);
-
-  rect(0, 300, 600, 10);
+ lines.show();//here
 
 
   if (test.allDotsDead()) {
@@ -32,5 +30,6 @@ void draw() {
 
     test.update();
     test.show();
+    
   }
 }

@@ -44,7 +44,7 @@ class Population {
       dots[i].calculateFitness();
     }
   }
-
+ 
 
   //------------------------------------------------------------------------------------------------------------------------------------
   //returns whether all the dots are either dead or have reached the goal
