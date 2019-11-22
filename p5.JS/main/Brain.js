@@ -1,17 +1,19 @@
 class Brain {
-	var pairs = [{x: '', y: ''}];
+	var step = 0;
 	directions = []; //PVector
 	
 	constructor Brain(size){
-		directions = [] //PVector[size]
+		directions = []
+		for(let f = 0; f < size; f++){
+			directions.push(new Point());
+		}
 		randomize();
 	}
 	
 	function randomize(){
 		for(let i = 0; i < directions.length; i++){
 			randomAngle = Math.random(3.1415);
-			directions[i].x = Math.sin(randomAngle); //PVector.fromAngle
-			directions[i].y = Math.cos(randomAngle); //PVector.fromAngle
+			direction[i].fromAngle(randomAngle); //PVector.fromAngle
 		}
 	}
 	
@@ -30,10 +32,7 @@ class Brain {
 			if(rand < mutationRate){
 				randomAngle = random(randomAngle);
 			}
-			directions[i].x = Math.sin(randomAngle); //PVector.fromAngle
-			directions[i].y = Math.cos(randomAngle); //PVector.fromAngle
+			direction[i].fromAngle(randomAngle); //PVector.fromAngle
 		}
-		
-	}
-	
+	}	
 }
