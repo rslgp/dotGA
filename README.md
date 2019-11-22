@@ -12,7 +12,7 @@ bash ./install.sh
 ```
 
 ## Grupo
-💛 Bruno Martins </br> 
-💜 Iris Soares </br>
+💜 Bruno Martins </br> 
+💛 Iris Soares </br>
 💚 Jose Gabriel </br>
 💙 Vitor Sousa </br>
