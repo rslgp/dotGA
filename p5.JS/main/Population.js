@@ -1,5 +1,5 @@
 class Population{
-  //Dot[] dots;
+  Dot[] dots;
   
  fitnessFunction = 0;
  gen = 1;
@@ -14,7 +14,7 @@ class Population{
 
 //Mostrar os pontos
 function show(){
-  for(let i = 1;i < dots.length();i++){
+  for(let i = 1;i < dots.length;i++){
       dots[i].show();
   }
   dots[0].show();
@@ -22,7 +22,7 @@ function show(){
 
 //Atualizar os pontos
 function update(){
-    for(let i = 0;i < dots.length(); i++){
+    for(let i = 0;i < dots.length; i++){
         if(dots[i].brain.step > minStep){//se o ponto deus mais passos que o melhor ponto para chegar ao objetivo
         dots[i].dead = true; //ele morre
         }else{
@@ -33,14 +33,14 @@ function update(){
 
 //calculo da fitness function
 function calculateFitness(){
-    for(let i = 0; i < dots.length();i++){
+    for(let i = 0; i < dots.length;i++){
         dots[i].calculateFitness();
     }
 }
 
 //lesgou checar se estão todos mortos ou que ja tenham chegados
 function allDotsDead(){
-    for(let i =0; i<dots.length();i++){
+    for(let i =0; i<dots.length;i++){
         if(!dots[i].dead() && !dots[i].reachedGoal()){
             return false;
         }
@@ -50,13 +50,13 @@ function allDotsDead(){
 
 
 function naturalSelection(){
-    Dot[] newDots = new Dot[dots.length()]; //proxima geração
+    Dot[] newDots = new Dot[dots.length]; //proxima geração
     setBestDot();
     calculateFitnessSum();
 
     newDots[0] = dots[bestDot].gimmeBaby();
     newDots[0].isBest = true;
-    for(let i = 1;i <newDots.length();i++){
+    for(let i = 1;i <newDots.length;i++){
         //escolhe o pai baseado no fitness
         Dot parent = selectParent();
 
@@ -69,7 +69,7 @@ function naturalSelection(){
 
 function calculateFitnessSum(){
     var fitnessSum = 0;
-    for(let i = 0; i <dots.length();i++){
+    for(let i = 0; i <dots.length;i++){
         fitnessSum += dots[i].fitness;
     }
 }
@@ -84,7 +84,7 @@ function selectParent(){
     let rand = random(fitnessSum);
     let runningSum = 0;
     
-    for (let i =0;i <dots.length();i++){
+    for (let i =0;i <dots.length;i++){
         runningSum += dots[i].fitness;
         if(runningSum > rand){
             return dots[i];
@@ -95,7 +95,7 @@ function selectParent(){
 
 //mutaciona os cerebros dos pontos
 function mutateBabies(){
-    for (let i =1;i<dots.length();i++){
+    for (let i =1;i<dots.length;i++){
         dots[i].brain.mutate();
     }
 }
@@ -105,7 +105,7 @@ function setBestDot(){
     let max = 0;
     let maxIndex = 0;
 
-    for(let i = 0; i < dots.length();i++){
+    for(let i = 0; i < dots.length;i++){
         if(dots[i].fitness >max){
             max = dots[i].fitness;
             maxIndex = i;
