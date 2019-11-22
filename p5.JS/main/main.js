@@ -1,25 +1,35 @@
-//Population test;
-
-var parObjetivo = [];
-
-  parObjetivo.push(400);
-  parObjetivo.push(10);
-  
-  console.log(parObjetivo);
+Population test = new Population();
+var goal = new Point(400, 10);
  
-var QtdDeBixo = 0;
+var QtdDeBixo = 1000;
 
 function setup() {
    createCanvas(800,800);
    frameRate(100);
-   //teste = new Population(QtdDeBixo);
+   teste = new Population(QtdDeBixo);
 }
 
 
 function draw() {
-  background(220);
+  background(255);
   
   //desenhar o objetivo
-  fill(255,0,0);
-  ellipse(parObjetivo[0],parObjetivo[1],10,10);
+  fill(255, 0, 0);
+  ellipse(goal.x, goal.y, 10, 10);
+  
+  //desenhar obstáculo(s)
+  fill(0, 0, 255);
+  rect(0, 300, 600, 10);
+  
+  if(test.allDotsDead()) {
+    //algoritmo genético
+    test.calculateFitness();
+    test.naturalSelection();
+    test.mutateDemBabies();
+  } else {
+    //se quaisquer outros pontos ainda está vivo, então atualize e os mostre
+    
+    test.update();
+    test.show();
+  }
 }
