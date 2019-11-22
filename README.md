@@ -2,6 +2,12 @@
 Utilizando algoritmo genético num cenário criado </br>
 com obstáculos objetivando atingir uma meta.
 
+## Grupo
+💜 Bruno Martins </br> 
+💛 Iris Soares </br>
+💚 Jose Gabriel </br>
+💙 Vitor Sousa </br>
+
 ## Instalação
 ```
 cd Downloads/
@@ -11,8 +17,7 @@ cd processing-3.5.3/
 bash ./install.sh
 ```
 
-## Grupo
-💜 Bruno Martins </br> 
-💛 Iris Soares </br>
-💚 Jose Gabriel </br>
-💙 Vitor Sousa </br>
+### Lembre-se de que:
+* JavaScript usa ``` function ``` na declaração de métodos, ou seja nada de método: ``` void Metodo () ```
+* Constructor não recebe o nome, então só tasca: ``` constructor() ```
+* Length é atributo de arrays, ou seja: ``` length ``` não isso ``` length() ```
