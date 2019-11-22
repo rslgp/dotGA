@@ -1,4 +1,4 @@
-Population test = new Population();
+var test = new Population();
 var goal = new Point(400, 10);
  
 var QtdDeBixo = 1000;
