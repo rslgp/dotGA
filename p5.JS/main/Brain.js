@@ -1,30 +1,28 @@
 class Brain {
-	var step = 0;
-	var directions = []; //PVector
-	
-	constructor Brain(size){
-		directions = []
+	constructor(size){
+		this.directions = [];
+		this.step=0;
 		for(let f = 0; f < size; f++){
 			directions.push(new Point());
 		}
 		randomize();
 	}
-	
+
 	randomize(){
 		for(let i = 0; i < directions.length; i++){
 			randomAngle = Math.random(3.1415);
 			direction[i].fromAngle(randomAngle); //PVector.fromAngle
 		}
 	}
-	
+
 	clone(){
-		Brain clone = new Brain();
+		let clone = new Brain();
 		for(let i = 0; i < directions.length; i++){
 			clone.directions[i] = directions[i];
 		}
 		return clone;
 	}
-	
+
 	mutate(){
 		mutationRate = 0.01;
 		for(let i = 0; i < directions.length; i++){
