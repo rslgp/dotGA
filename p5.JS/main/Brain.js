@@ -10,14 +10,14 @@ class Brain {
 		randomize();
 	}
 	
-	function randomize(){
+	randomize(){
 		for(let i = 0; i < directions.length; i++){
 			randomAngle = Math.random(3.1415);
 			direction[i].fromAngle(randomAngle); //PVector.fromAngle
 		}
 	}
 	
-	function Brain clone(){
+	clone(){
 		Brain clone = new Brain();
 		for(let i = 0; i < directions.length; i++){
 			clone.directions[i] = directions[i];
@@ -25,7 +25,7 @@ class Brain {
 		return clone;
 	}
 	
-	function mutate(){
+	mutate(){
 		mutationRate = 0.01;
 		for(let i = 0; i < directions.length; i++){
 			rand = random();
