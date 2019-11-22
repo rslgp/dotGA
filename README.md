@@ -18,6 +18,6 @@ bash ./install.sh
 ```
 
 ### Lembre-se de que:
-* JavaScript usa ``` function ``` na declaração de métodos, ou seja nada de método: ``` void Metodo () ```
+* JavaScript não usa ``` function ``` na declaração de métodos, ou seja nada de método: ``` function Metodo () ```
 * Constructor não recebe o nome, então só tasca: ``` constructor() ```
 * Length é atributo de arrays, ou seja: ``` length ``` não isso ``` length() ```
