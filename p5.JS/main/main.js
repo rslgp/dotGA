@@ -6,7 +6,7 @@ var QtdDeBixo = 1000;
 function setup() {
    createCanvas(800,800);
    frameRate(100);
-   teste = new Population(QtdDeBixo);
+   //teste = new Population(QtdDeBixo);
 }
 
 
