@@ -1,6 +1,6 @@
 class Brain {
 	var step = 0;
-	directions = []; //PVector
+	var directions = []; //PVector
 	
 	constructor Brain(size){
 		directions = []
