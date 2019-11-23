@@ -1,15 +1,11 @@
-class Line{
-	// Adicionei as duas linhas abaixo
-	let p1;
-	let p2;
-	
+class Line {
 	constructor(pp1,pp2){
 		this.p1 = new Point(pp1);
 		this.p2 = new Point(pp2);
 		console.log("Novos pontos: ", this.p1, this.p2);
 	}
 
-	show(){
+	show() {
 		// Eu adicionei this aos p's mas acho que
 		// ainda assim falte conteúdo pra esse método
 		ctx.moveTo(this.p1.x, this.p1.y); // Move para o ponto 1 da reta
