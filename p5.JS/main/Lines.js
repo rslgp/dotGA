@@ -1,4 +1,7 @@
 class Lines {
+	// Adicionei esse linha abaixo
+	let lines; 
+	
 	constructor(){
 		this.lines = [];//lista de linhas
 	}	

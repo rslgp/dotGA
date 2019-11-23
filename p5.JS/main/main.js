@@ -3,6 +3,9 @@ var goal = new Point(400, 10);
  
 var QtdDeBixo = 1000;
 
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
 function setup() {
    createCanvas(800,800);
    frameRate(100);
