@@ -3,15 +3,16 @@ class Brain {
 		this.directions = [];
 		this.step=0;
 		for(let f = 0; f < size; f++){
-			directions.push(new Point());
+			this.directions.push(new Point());
 		}
-		randomize();
+		this.randomize();
 	}
 
 	randomize(){
-		for(let i = 0; i < directions.length; i++){
+	  let randomAngle=0;	
+  for(let i = 0; i < this.directions.length; i++){
 			randomAngle = Math.random(3.1415);
-			direction[i].fromAngle(randomAngle); //PVector.fromAngle
+			this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
 		}
 	}
 
@@ -24,13 +25,15 @@ class Brain {
 	}
 
 	mutate(){
-		mutationRate = 0.01;
+		let mutationRate = 0.01;
+    let randomAngle=0;
+    let rand=0;
 		for(let i = 0; i < directions.length; i++){
 			rand = random();
 			if(rand < mutationRate){
 				randomAngle = random(randomAngle);
 			}
-			direction[i].fromAngle(randomAngle); //PVector.fromAngle
+			this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
 		}
 	}	
 }
