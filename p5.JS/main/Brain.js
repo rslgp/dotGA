@@ -35,11 +35,11 @@ class Brain {
     let randomAngle=0;
     let rand=0;
     for (let i = 0; i < this.directions.length; i++) {
-      rand = random();
+      rand = random();//entre 0 e 1 (0 e 100%)
       if (rand < mutationRate) {
         randomAngle = random(6.2830);
+        this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
       }
-      this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
     }
     //console.log("Mutacionando com taxa de mutação:", mutationRate);
   }
