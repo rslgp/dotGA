@@ -21,3 +21,4 @@ bash install.sh
 * JavaScript não usa ``` function ``` na declaração de métodos, ou seja nada de método: ``` function Metodo () ```
 * Constructor não recebe o nome, então só tasca: ``` constructor() ```
 * Length é atributo de arrays, ou seja: ``` length ``` não isso ``` length() ```
+* Se quiser fazer ```random(algo)``` pra retornar random entre 0 e algo, use ```random()*algo```
