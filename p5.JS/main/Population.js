@@ -86,7 +86,7 @@ class Population {
   //since dots with a higher fitness function add more to the running sum then they have a higher chance of being chosen
 
   selectParent() {
-    let rand = random(this.fitnessSum);
+    let rand = Math.random()*this.fitnessSum;
     let runningSum = 0;
 
     for (let i =0; i < this.dots.length; i++) {
@@ -119,7 +119,7 @@ class Population {
     this.bestDot = maxIndex;
     //se esse ponto chegou ao final então resete o numero minimo de passos para chegar ao objetivo
     if (this.dots[this.bestDot].reachedGoal) {
-      this.minStep = this.dots[bestDot].brain.step;
+      this.minStep = this.dots[this.bestDot].brain.step;
       // console.log("step: ", minStep);
     }
   }
