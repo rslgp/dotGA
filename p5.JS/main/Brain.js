@@ -1,5 +1,6 @@
 class Brain {
   constructor(size) {
+	this.length = size;
     this.directions = [];
     this.step = 0;
     for (let f = 0; f < size; f++) {

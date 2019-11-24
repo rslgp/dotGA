@@ -18,7 +18,7 @@ class Population {
     for (let i = 0; i < this.dots.length; i++) {
       this.dots[i].show();
     }
-    console.log("gen: "+this.gen);
+    // console.log("gen: "+this.gen);
   }
 
   //Atualizar os pontos
@@ -120,7 +120,7 @@ class Population {
     //se esse ponto chegou ao final então resete o numero minimo de passos para chegar ao objetivo
     if (this.dots[this.bestDot].reachedGoal) {
       this.minStep = this.dots[bestDot].brain.step;
-      console.log("step: ", minStep);
+      // console.log("step: ", minStep);
     }
   }
 }

@@ -1,6 +1,6 @@
 class Dot {
   constructor() {
-    this.brain = new Brain(1000);//brain will have 1000 instructions
+    this.brain = new Brain(5000);//brain will have 1000 instructions
     //start the dots at the bottom of the window with no velocity nor acceleration
     this.pos = new Point(100, 100);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
@@ -45,20 +45,21 @@ class Dot {
   //moves the dot according to the brains directions
   move() {
     if (this.brain.length > this.brain.step) {//if there are still directions to go
-      this.acc = this.brain.direction[this.brain.step];
+      this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
       console.log("alive");
     } else {//if directions ended
       this.dead = true;
-      console.log("dead no move");
+	  console.log(this.brain.length, this.brain.step);
+      //console.log("dead no move");
     }
 
     //apply the acceleration and move the dot
     this.vel.add(this.acc);
     this.vel.limit(5);
     this.pos.add(this.vel);
-    console.log("posx "+this.pos.x);
-    console.log("posy "+this.pos.y);
+    //console.log("posx "+this.pos.x);
+    //console.log("posy "+this.pos.y);
   }
 
   //---------------------------------------------------------------------------------
