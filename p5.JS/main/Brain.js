@@ -14,7 +14,8 @@ class Brain {
   randomize() {
     let randomAngle=0;	
     for (let i = 0; i < this.directions.length; i++) {
-      randomAngle = Math.random(6.2830);//2*PI
+      randomAngle = Math.random()*6.2830;//2*PI
+      //console.log("angle1="+randomAngle);
       this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
     }
     //console.log("Houve randomização!")
@@ -35,9 +36,11 @@ class Brain {
     let randomAngle=0;
     let rand=0;
     for (let i = 0; i < this.directions.length; i++) {
-      rand = random();//entre 0 e 1 (0 e 100%)
+      rand = Math.random();//entre 0 e 1 (0 e 100%)
       if (rand < mutationRate) {
-        randomAngle = random(6.2830);
+        randomAngle = Math.random()*6.2830;
+        //console.log("mutated angle="+randomAngle);
+
         this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
       }
     }

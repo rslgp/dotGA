@@ -1,6 +1,6 @@
-var QtdDeBixo = 500;
+var QtdDeBixo = 300;
 var test = new Population(QtdDeBixo);
-var goal = new Point(400, 400);
+var goal = new Point(400, 10);
 var obstaculos = new Lines();
 
 //limites do grid, usado no Dot.js no outOfGrid()

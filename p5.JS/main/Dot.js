@@ -2,7 +2,7 @@ class Dot {
   constructor() {
     this.brain = new Brain(1000);//brain will have 1000 instructions
     //start the dots at the bottom of the window with no velocity nor acceleration
-    this.pos = new Point(400, 500);//posicao inicial dos dots aqui
+    this.pos = new Point(400, 400);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
     this.dead = false;
@@ -47,10 +47,10 @@ class Dot {
     if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
       this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
-      console.log("alive");
+      //console.log("alive");
     } else {//if directions ended
       this.dead = true;
-      console.log(this.brain.length, this.brain.step);
+      //console.log(this.brain.length, this.brain.step);
       //console.log("dead by brain");
     }
 
@@ -76,10 +76,10 @@ class Dot {
         //console.log("dead por aut of grid");
       } else if (this.pos.dist(goal) < 5) {//reached goal
         this.reachedGoal = true;
-        console.log("chegou no objetivo");
+        //console.log("chegou no objetivo");
       } else if (this.checkCollision(obstaculos/*isso ta dclarado no main*/)) {//collides with some line
         this.dead = true;
-        console.log("dead por obstaculo");
+        //console.log("dead por obstaculo");
       }
     }
   }
