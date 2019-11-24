@@ -1,7 +1,8 @@
-var test = new Population(100);
-var goal = new Point(400, 10);
+var QtdDeBixo = 5;
+var test = new Population(QtdDeBixo);
+var goal = new Point(400, 400);
 var obstaculos = new Lines();
-var QtdDeBixo = 1000;
+
 
 //var canvas = document.getElementById("canvas");
 //var ctx = canvas.getContext("2d");
