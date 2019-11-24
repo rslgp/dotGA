@@ -1,13 +1,13 @@
 class Brain {
   constructor(size) {
-    this.length = size;
+	this.length = size;
     this.directions = [];
     this.step = 0;
     for (let f = 0; f < size; f++) {
       this.directions.push(new Point());
     }
-    // console.log("Foram adicionados: ", size, " pontos ao Brain");
-    // console.log("Preparar randomização.");
+   // console.log("Foram adicionados: ", size, " pontos ao Brain");
+   // console.log("Preparar randomização.");
     this.randomize();
   }
 
