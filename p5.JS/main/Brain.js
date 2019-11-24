@@ -16,7 +16,7 @@ class Brain {
       randomAngle = Math.random(3.1415);
       this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
     }
-    console.log("Houve randomização!")
+    //console.log("Houve randomização!")
   }
 
   clone() {
@@ -24,7 +24,7 @@ class Brain {
     for (let i = 0; i < this.directions.length; i++) {
       clone.directions[i] = this.directions[i];
     }
-    console.log("Clonando Brain");
+    //console.log("Clonando Brain");
     return clone;
   }
 
@@ -40,6 +40,6 @@ class Brain {
       }
       this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
     }
-    console.log("Mutacionando com taxa de mutação:", mutationRate);
+    //console.log("Mutacionando com taxa de mutação:", mutationRate);
   }
 }

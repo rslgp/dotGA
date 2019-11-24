@@ -2,7 +2,7 @@ class Line {
   constructor(pp1, pp2) {
     this.p1 = new Point(pp1);
     this.p2 = new Point(pp2);
-    console.log("Novos pontos: ", this.p1, this.p2);
+    console.log("Nova linha: ", this.p1, this.p2);
   }
 
   show() {

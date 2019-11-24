@@ -50,7 +50,7 @@ class Dot {
       console.log("alive");
     } else {//if directions ended
       this.dead = true;
-      console.log("dead");
+      console.log("dead no move");
     }
 
     //apply the acceleration and move the dot
@@ -72,10 +72,12 @@ class Dot {
       this.move();
       if (this.outOfGrid()) {//out of grid
         this.dead = true;
+         console.log("dead por aut of grid");
       } else if (this.pos.dist(goal) < 5) {//reached goal
         this.reachedGoal = true;
       } else if (this.checkCollision(obstaculos/*isso ta dclarado no main*/)) {//collides with some line
         this.dead = true;
+         console.log("dead por parede");
       }
     }
   }
