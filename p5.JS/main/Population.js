@@ -66,7 +66,9 @@ class Population {
       newDots[i] = parent.gimmeBaby();
     }
 
-    this.dots = newDots.slice();
+    for (let i = 0; i < newDots.length; i++) {
+      this.dots[i] = newDots[i];
+    }
     this.gen++;
   }
 
