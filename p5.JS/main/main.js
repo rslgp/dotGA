@@ -1,10 +1,10 @@
 var test = new Population(100);
 var goal = new Point(400, 10);
- 
+var obstaculos = new Lines();
 var QtdDeBixo = 1000;
 
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
+//var canvas = document.getElementById("canvas");
+//var ctx = canvas.getContext("2d");
 
 function setup() {
    createCanvas(800,800);
@@ -20,9 +20,7 @@ function draw() {
   fill(255, 0, 0);
   ellipse(goal.x, goal.y, 10, 10);
   
-  //desenhar obstáculo(s)
-  fill(0, 0, 255);
-  rect(0, 300, 600, 10);
+  obstaculos.show();
   
   if(test.allDotsDead()) {
     //algoritmo genético

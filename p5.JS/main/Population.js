@@ -1,11 +1,13 @@
 class Population{
     
     
-    constructor(size){
+  constructor(size){
     this.dots = [];
     this.fitnessFunction = 0;
+    this.fitnessSum = 0;
     this.bestDot = 0;
     this.gen = 1;
+    this.minstep = 1000;
     for(let f = 0; f < size; f++){
         this.dots.push(new Dot());
     }
@@ -13,19 +15,18 @@ class Population{
 
 //Mostrar os pontos
  show(){
-  for(let i = 1;i < dots.length;i++){
-      dots[i].show();
+  for(let i = 0;i < this.dots.length;i++){
+      this.dots[i].show();
   }
-  dots[0].show();
 }
 
 //Atualizar os pontos
  update(){
-    for(let i = 0;i < dots.length; i++){
-        if(dots[i].brain.step > minStep){//se o ponto deus mais passos que o melhor ponto para chegar ao objetivo
-        dots[i].dead = true; //ele morre
+    for(let i = 0;i < this.dots.length; i++){
+        if(this.dots[i].brain.step > minStep){//se o ponto deus mais passos que o melhor ponto para chegar ao objetivo
+        this.dots[i].dead = true; //ele morre
         }else{
-            dots[i].update();
+            this.dots[i].update();
         }
     }
 }
@@ -33,14 +34,14 @@ class Population{
 //calculo da fitness function
 calculateFitness(){
     for(let i = 0; i < dots.length;i++){
-        dots[i].calculateFitness();
+        this.dots[i].calculateFitness();
     }
 }
 
 //lesgou checar se estão todos mortos ou que ja tenham chegados
 allDotsDead(){
-    for(let i =0; i<dots.length;i++){
-        if(!dots[i].dead() && !dots[i].reachedGoal()){
+    for(let i = 0; i<this.dots.length;i++){
+        if(!this.dots[i].dead && !this.dots[i].reachedGoal){
             return false;
         }
     }
@@ -49,27 +50,29 @@ allDotsDead(){
 
 
 naturalSelection(){
-    let newDots = new Dot[dots.length]; //proxima geração
+    let newDots = []; //proxima geração
+    for(let f = 0; f < this.dots.length; f++){
+        newDots.push(new Dot());
+    }
     setBestDot();
     calculateFitnessSum();
 
-    newDots[0] = dots[bestDot].gimmeBaby();
+    newDots[0] = this.dots[bestDot].gimmeBaby();
     newDots[0].isBest = true;
     for(let i = 1;i <newDots.length;i++){
         //escolhe o pai baseado no fitness
-        let parent = selectParent();
-
+        let parent = this.selectParent();
         newDots[i] = parent.gimmeBaby();
     }
 
-    dots = newDots.clone();
-    gen++;
+    this.dots = newDots.clone();
+    this.gen++;
 }
 
 calculateFitnessSum(){
-    var fitnessSum = 0;
-    for(let i = 0; i <dots.length;i++){
-        fitnessSum += dots[i].fitness;
+    this.fitnessSum = 0;
+    for(let i = 0; i < this.dots.length;i++){
+        this.fitnessSum += this.dots[i].fitness;
     }
 }
 
@@ -80,13 +83,13 @@ calculateFitnessSum(){
 //since dots with a higher fitness function add more to the running sum then they have a higher chance of being chosen
   
  selectParent(){
-    let rand = random(fitnessSum);
+    let rand = random(this.fitnessSum);
     let runningSum = 0;
     
-    for (let i =0;i <dots.length;i++){
+    for (let i =0;i < this.dots.length;i++){
         runningSum += dots[i].fitness;
         if(runningSum > rand){
-            return dots[i];
+            return this.dots[i];
         }
     }
     return null;
@@ -94,8 +97,8 @@ calculateFitnessSum(){
 
 //mutaciona os cerebros dos pontos
  mutateBabies(){
-    for (let i =1;i<dots.length;i++){
-        dots[i].brain.mutate();
+    for (let i =1;i<this.dots.length;i++){
+        this.dots[i].brain.mutate();
     }
 }
 
@@ -105,15 +108,15 @@ calculateFitnessSum(){
     let maxIndex = 0;
 
     for(let i = 0; i < dots.length;i++){
-        if(dots[i].fitness >max){
-            max = dots[i].fitness;
+        if(this.dots[i].fitness >max){
+            max = this.dots[i].fitness;
             maxIndex = i;
         }
     }
-    bestDot = maxIndex;
+    this.bestDot = maxIndex;
     //se esse ponto chegou ao final então resete o numero minimo de passos para chegar ao objetivo
     if(dots[bestDot].reachedGoal){
-        minStep = dots[bestDot].brain.step;
+        this.minStep = this.dots[bestDot].brain.step;
         console.log("step: ",minStep);
     }
 

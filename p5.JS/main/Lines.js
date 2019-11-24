@@ -4,13 +4,13 @@ class Lines {
 	}	
 
 	add(line) { //Adicionar linha
-		lines.push(line);
+		this.lines.push(line);
 	}
 
 	show() {
 		//percorrer linhas e desenhar elas como faz nos dots 
-		for(let i = 0; i < lines.length; i++){
-			lines[i].show();
+		for(let i = 0; i < this.lines.length; i++){
+			this.lines[i].show();
 		}
 	}
 }
