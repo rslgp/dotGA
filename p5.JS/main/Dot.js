@@ -47,14 +47,18 @@ class Dot {
     if (this.brain.length > this.brain.step) {//if there are still directions to go
       this.acc = this.brain.direction[this.brain.step];
       this.brain.step++;
+      console.log("alive");
     } else {//if directions ended
       this.dead = true;
+      console.log("dead");
     }
 
     //apply the acceleration and move the dot
     this.vel.add(this.acc);
     this.vel.limit(5);
     this.pos.add(this.vel);
+    console.log("posx "+this.pos.x);
+    console.log("posy "+this.pos.y);
   }
 
   //---------------------------------------------------------------------------------

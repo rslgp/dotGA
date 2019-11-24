@@ -1,4 +1,4 @@
-var QtdDeBixo = 5;
+var QtdDeBixo = 1;
 var test = new Population(QtdDeBixo);
 var goal = new Point(400, 400);
 var obstaculos = new Lines();
