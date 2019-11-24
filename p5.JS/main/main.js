@@ -3,6 +3,11 @@ var test = new Population(QtdDeBixo);
 var goal = new Point(400, 400);
 var obstaculos = new Lines();
 
+//limites do grid, usado no Dot.js no outOfGrid()
+var GX1=2;
+var GY1=2;
+var GX2=800;
+var GY2=800;
 
 //var canvas = document.getElementById("canvas");
 //var ctx = canvas.getContext("2d");

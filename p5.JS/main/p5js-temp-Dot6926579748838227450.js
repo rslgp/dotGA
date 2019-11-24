@@ -26,7 +26,7 @@ class Dot {
     }
   }
 
-  collide(line) {//TODO
+  collide(line) {
     //checar colisao de linha com this.pos
     return false;
   }
@@ -44,14 +44,14 @@ class Dot {
   //-------------------------------------------------------------------------------
   //moves the dot according to the brains directions
   move() {
-    if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
+    if (this.brain.length > this.brain.step) {//if there are still directions to go
       this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
       console.log("alive");
     } else {//if directions ended
       this.dead = true;
       console.log(this.brain.length, this.brain.step);
-      //console.log("dead by brain");
+      //console.log("dead no move");
     }
 
     //apply the acceleration and move the dot
@@ -64,8 +64,8 @@ class Dot {
 
   //---------------------------------------------------------------------------------
   //calls the move function and check for collisions
-  outOfGrid() {//Gs declarados no main
-    return this.pos.x < GX1 || this.pos.y < GY1 || this.pos.x > GX2 || this.pos.y > GY2;
+  outOfGrid() {
+    return this.pos.x < 2 || this.pos.y < 2 || this.pos.x > 600 || this.pos.y > 600;
   }
 
   update() {
@@ -73,13 +73,12 @@ class Dot {
       this.move();
       if (this.outOfGrid()) {//out of grid
         this.dead = true;
-        //console.log("dead por aut of grid");
+        console.log("dead por aut of grid");
       } else if (this.pos.dist(goal) < 5) {//reached goal
         this.reachedGoal = true;
-        console.log("chegou no objetivo");
       } else if (this.checkCollision(obstaculos/*isso ta dclarado no main*/)) {//collides with some line
         this.dead = true;
-        console.log("dead por obstaculo");
+        console.log("dead por parede");
       }
     }
   }

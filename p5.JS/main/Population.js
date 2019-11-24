@@ -18,7 +18,7 @@ class Population {
     for (let i = 0; i < this.dots.length; i++) {
       this.dots[i].show();
     }
-    // console.log("gen: "+this.gen);
+    console.log("gen: "+this.gen);
   }
 
   //Atualizar os pontos
