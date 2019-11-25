@@ -2,7 +2,7 @@ class Lines{
    Line lines[];//array dinamico por favor
    
    void add(Line l){
-       lines.push_back(l);//adicionar linha aqui
+      // lines.push_back(l);//adicionar linha aqui
    }  
   
   void show(){
