@@ -2,7 +2,7 @@ class Dot {
   constructor() {
 
     //start the dots at the bottom of the window with no velocity nor acceleration
-    this.pos = new Point(400, 600-50);//posicao inicial dos dots aqui
+    this.pos = new Point(300, 600-20);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
     this.brain = new Brain(1000);//brain will have 1000 instructions

@@ -10,6 +10,8 @@ class Lines {
 
   show() {
     //percorrer linhas e desenhar elas como faz nos dots 
+       stroke(126);
+
     for (let i = 0; i < this.lines.length; i++) {
       
       this.lines[i].show();

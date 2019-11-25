@@ -15,9 +15,10 @@ class Population {
 
   //Mostrar os pontos
   show() {
-    for (let i = 0; i < this.dots.length; i++) {
+    for (let i = 1; i < this.dots.length; i++) {
       this.dots[i].show();
     }
+    this.dots[0].show();
     // console.log("gen: "+this.gen);
   }
 

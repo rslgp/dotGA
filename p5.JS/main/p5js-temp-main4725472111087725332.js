@@ -2,6 +2,8 @@ var QtdDeBixo = 1000;
 var test = new Population(QtdDeBixo);
 var goal = new Point(300, 2);
 var obstaculos = new Lines();
+obstaculos.add(new Line(new Point(10,10), new Point(100,100)));
+obstaculos.add(new Line(new Point(20,20), new Point(100,100)));
 
 //limites do grid, usado no Dot.js no outOfGrid()
 var GX1=0;
@@ -21,7 +23,11 @@ function setup() {
 
 function draw() {
   background(255);
-
+   //funciona
+   stroke(126);
+   line(30, 20, 85, 20);
+  obstaculos.show();
+    
   //desenhar o objetivo
   fill(255, 0, 0);
   ellipse(goal.x, goal.y, 10, 10);
@@ -32,7 +38,7 @@ function draw() {
   ellipse(GX2, GY2, 10, 10);
   
   
-  obstaculos.show();
+
 
   if (test.allDotsDead()) {
     //algoritmo genético
@@ -45,4 +51,6 @@ function draw() {
     test.update();
     test.show();
   }
+  
+
 }
