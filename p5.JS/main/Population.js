@@ -104,11 +104,11 @@ calculateFitness2() {
 
     for (let i =0; i < this.dots.length; i++) {
       runningSum += this.dots[i].fitness;
-      if (runningSum > rand) {
+      if (runningSum >= rand) {
         return this.dots[i];
       }
     }
-    return null;
+    return this.dots[0];
   }
 
   //mutaciona os cerebros dos pontos

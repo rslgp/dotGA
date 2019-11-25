@@ -5,7 +5,7 @@ class Dot {
     this.pos = new Point(300, 600-20);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
-    this.brain = new Brain(100);//brain will have 1000 instructions
+    this.brain = new Brain(1000);//brain will have 1000 instructions
 
     this.dead = false;
     this.endedAlive=true;
@@ -53,7 +53,9 @@ class Dot {
       this.brain.step++;
       //console.log("alive");
     } else {//if directions ended
-      //this.dead = true;
+      if (choice==1) {
+        this.dead = true;
+      }
       //console.log(this.brain.length, this.brain.step);
       //console.log("dead by brain");
     }
@@ -80,8 +82,13 @@ class Dot {
         this.dead = true;
         //console.log("dead por aut of grid");
       } else if (this.pos.dist(goal) < 5) {//reached goal
-        this.reachedGoal = true;
-        //console.log("chegou no objetivo");
+        if (choice==1) {
+          this.reachedGoal = true;
+          //console.log("chegou no objetivo");
+        }else if(choice ==2){
+          this.reachedGoal=true;
+        }
+        
       } else if (this.checkCollision(obstaculos/*isso ta dclarado no main*/)) {//collides with some line
         this.dead = true;
         //console.log("dead por obstaculo");
@@ -104,28 +111,27 @@ class Dot {
     if (this.reachedGoal || this.dead) {
       this.fitness=0;
       console.log("morreu "+this.fitness);
-    } 
-    else {
+    } else {
       let distanceGoal = this.pos.dist(goal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
-      
+
       let minimunDistance=100000;//guarda a menor distancia entre 2 pontos diferentes
-      for(let i=0;i<test.dots.length;i++){
-         if(this.pos.equal(test.dots[i].pos)){
-           continue;//nao checa pontos na msma posicao
-         }else{
-             minimunDistance = Math.min(minimunDistance, this.pos.dist(test.dots[i].pos));
-         }
+      for (let i=0; i<test.dots.length; i++) {
+        if (this.pos.equal(test.dots[i].pos)) {
+          continue;//nao checa pontos na msma posicao
+        } else {
+          minimunDistance = Math.min(minimunDistance, this.pos.dist(test.dots[i].pos));
+        }
       }
-      
-      this.fitness*=minimunDistance*this.brain.step/1000;
+
+      this.fitness+=minimunDistance*this.brain.step/1000;
       console.log("vivo "+this.fitness);
     }
   }
 
-    gimmeBaby() {
-      let baby = new Dot();
-      baby.brain = this.brain.clone();
-      return baby;
-    }
+  gimmeBaby() {
+    let baby = new Dot();
+    baby.brain = this.brain.clone();
+    return baby;
   }
+}

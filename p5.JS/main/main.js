@@ -1,10 +1,10 @@
-var QtdDeBixo = 100;
+var QtdDeBixo = 1000;
 var test = new Population(QtdDeBixo);
 var goal = new Point(300, 300);
 let obstaculos = new Lines();
 obstaculos.add(new Line(new Point(10,10), new Point(100,100)));
 obstaculos.add(new Line(new Point(20,20), new Point(100,100)));
-
+let choice = 2;
 //limites do grid, usado no Dot.js no outOfGrid()
 var GX1=0;
 var GY1=0;
@@ -42,13 +42,23 @@ function draw() {
 
   if (test.allDotsDead()) {
     //algoritmo genético
-    test.calculateFitness();
+    if(choice==1){
+          test.calculateFitness();
+    }else if (choice==2){
+          test.calculateFitness2();
+
+    }
     test.naturalSelection();
     test.mutateBabies();
   } else {
     //se quaisquer outros pontos ainda está vivo, então atualize e os mostre
 
-    test.update();
+    if(choice==1){
+          test.update();
+    }else if (choice==2){
+          test.update2();
+
+    }
     test.show();
   }
   
