@@ -2,7 +2,7 @@ class Dot {
   constructor() {
 
     //start the dots at the bottom of the window with no velocity nor acceleration
-    this.pos = new Point(400, 600-50);//posicao inicial dos dots aqui
+    this.pos = new Point(300, 600-20);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
     this.brain = new Brain(1000);//brain will have 1000 instructions
@@ -22,7 +22,7 @@ class Dot {
     //ellipse(pos.x, pos.y,8,8);//draw circle
     if (this.isBest) {
       fill(0, 255, 0);
-      ellipse(this.pos.x, this.pos.y, 8, 8);
+      ellipse(this.pos.x, this.pos.y, 10, 10);
     } else {
       fill(0);
       ellipse(this.pos.x, this.pos.y, 4, 4);
@@ -59,7 +59,7 @@ class Dot {
 
     //apply the acceleration and move the dot
     this.vel.add(this.acc);
-    this.vel.limit(5);
+    this.vel.limit(7);
     this.pos.add(this.vel);
     //console.log("posx "+this.pos.x);
     //console.log("posy "+this.pos.y);
