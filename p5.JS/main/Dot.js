@@ -92,19 +92,40 @@ class Dot {
   calculateFitness() {
     if (this.reachedGoal) {
       this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
-      console.log(this.fitness);
+      //console.log(this.fitness);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
     }
   }
 
-  
-
-
-  gimmeBaby() {
-    let baby = new Dot();
-    baby.brain = this.brain.clone();
-    return baby;
+  calculateFitness2() {
+    if (this.reachedGoal) {
+      this.fitness=0;
+    } else if (this.dead) {//colidiu
+      let distanceGoal = this.pos.dist(goal);
+      this.fitness = 1.0 / (distanceGoal*distanceGoal);
+    } else {
+      let distanceGoal = this.pos.dist(goal);
+      this.fitness = 1.0 / (distanceGoal*distanceGoal);
+      
+      let minimunDistance=100000;//guarda a menor distancia entre 2 pontos diferentes
+      for(let i=0;i<test.dots.length;i++){
+         if(this.pos.equal(test.dots[i].pos)){
+           continue;//nao checa pontos na msma posicao
+         }else{
+             minimunDistance = Math.min(minimunDistance, this.pos.dist(test.dots[i].pos));
+         }
+      }
+      
+      this.fitness*=minimunDistance/100;
+      
+    }
   }
-}
+
+    gimmeBaby() {
+      let baby = new Dot();
+      baby.brain = this.brain.clone();
+      return baby;
+    }
+  }
