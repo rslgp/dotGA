@@ -7,7 +7,7 @@ class Population {
     this.fitnessSum = 0;
     this.bestDot = 0;
     this.gen = 1;
-    this.minstep = 1000;
+    this.minstep = 50000;
     for (let f = 0; f < size; f++) {
       this.dots.push(new Dot());
     }
@@ -83,6 +83,7 @@ calculateFitness2() {
       this.dots[i] = newDots[i];
     }
     this.gen++;
+    console.log("gen = "+ this.gen)
   }
 
   calculateFitnessSum() {

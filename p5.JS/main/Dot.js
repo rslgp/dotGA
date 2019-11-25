@@ -5,10 +5,10 @@ class Dot {
     this.pos = new Point(300, 600-20);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
-    this.brain = new Brain(1000);//brain will have 1000 instructions
-
+    this.brain = new Brain(2000);//brain will have 1000 instructions
+    
     this.dead = false;
-    this.endedAlive=true;
+    this.endedAlive=false;
     this.reachedGoal = false;
     this.isBest=false;//true if this dot is the best dot from previous generation
 
@@ -49,12 +49,19 @@ class Dot {
   //moves the dot according to the brains directions
   move() {
     if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
-      this.acc = this.brain.directions[this.brain.step];
-      this.brain.step++;
+      if(choice==2){
+        this.acc = this.brain.directions[this.brain.step];
+        this.brain.step++;
+      }else if (choice==2 && this.brain.step > 100){
+          this.endedAlive=true;
+      }
       //console.log("alive");
     } else {//if directions ended
       if (choice==1) {
         this.dead = true;
+      }else if(choice==2){
+        this.endedAlive=true;
+        this.dead=true;
       }
       //console.log(this.brain.length, this.brain.step);
       //console.log("dead by brain");
@@ -75,7 +82,7 @@ class Dot {
   }
 
   update() {
-    if (!this.dead && !this.reachedGoal) {
+    if (!this.dead && !this.reachedGoal && !this.endedAlive) {
       this.move();
       //console.log(this.pos.dist(goal));
       if (this.outOfGrid()) {//out of grid
@@ -106,12 +113,9 @@ class Dot {
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
     }
   }
-
+//-----------------------------------------------------------------------------
   calculateFitness2() {
-    if (this.reachedGoal || this.dead) {
-      this.fitness=0;
-      console.log("morreu "+this.fitness);
-    } else {
+    if(this.endedAlive){
       let distanceGoal = this.pos.dist(goal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
 
@@ -126,7 +130,15 @@ class Dot {
 
       this.fitness+=minimunDistance*this.brain.step/1000;
       console.log("vivo "+this.fitness);
+    }else if (this.dead) {
+      this.fitness=0;
+      console.log("morreu por parede "+this.fitness);
+    } else if(this.reachedGoal){
+      this.fitness=this.brain.steps/100;
+      console.log("steps= "+ this.brain.steps);
+      console.log("morreu no objetivo "+this.fitness);
     }
+    
   }
 
   gimmeBaby() {
