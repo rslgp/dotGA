@@ -1,14 +1,17 @@
 class Dot {
   constructor() {
-    this.brain = new Brain(1000);//brain will have 1000 instructions
+
     //start the dots at the bottom of the window with no velocity nor acceleration
     this.pos = new Point(400, 600-50);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
+    this.brain = new Brain(1000);//brain will have 1000 instructions
+
     this.dead = false;
     this.reachedGoal = false;
     this.isBest=false;//true if this dot is the best dot from previous generation
-    this.fitness = 0.0;
+
+    this.fitness = 0;
   }
 
   //------------------------------------------------------------------------------------

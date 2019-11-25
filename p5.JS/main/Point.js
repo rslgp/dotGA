@@ -15,7 +15,7 @@ class Point {
   }
 
   copy() {
-    return Point(this.x, this.y);
+    return new Point(this.x, this.y);
   }
 
   dist(other) {//pra pegar ditancia entre dot e outro ponto (dots[i].pos.dist(goal), por exemplo)

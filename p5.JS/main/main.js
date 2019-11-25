@@ -1,6 +1,6 @@
-var QtdDeBixo = 100;
+var QtdDeBixo = 1000;
 var test = new Population(QtdDeBixo);
-var goal = new Point(300, 300);
+var goal = new Point(400, 2);
 var obstaculos = new Lines();
 
 //limites do grid, usado no Dot.js no outOfGrid()
@@ -15,7 +15,7 @@ var GY2=600;
 function setup() {
  
   createCanvas(GX2, GY2);
-  frameRate(110);
+  frameRate(100);
 }
 
 
