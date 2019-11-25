@@ -1,16 +1,19 @@
 class Lines {
-	constructor(){
-		this.lines = [];//lista de linhas
+	constructor() {
+	  this.lines = [];//lista de linhas
 	}	
-
+  
 	add(line) { //Adicionar linha
-		lines.push(line);
+	  this.lines.push(line);
+	  //console.log("Adicionei mais uma linha")
+	  //console.log(this.lines.length);
 	}
-
+  
 	show() {
-		//percorrer linhas e desenhar elas como faz nos dots 
-		for(let i = 0; i < lines.length; i++){
-			lines[i].show();
-		}
+	  //percorrer linhas e desenhar elas como faz nos dots 
+	  for (let i = 0; i < this.lines.length; i++) {
+		this.lines[i].show();
+	  }
 	}
-}
+  }
+  
