@@ -5,9 +5,10 @@ class Dot {
     this.pos = new Point(300, 600-20);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
-    this.brain = new Brain(1000);//brain will have 1000 instructions
+    this.brain = new Brain(100);//brain will have 1000 instructions
 
     this.dead = false;
+    this.endedAlive=true;
     this.reachedGoal = false;
     this.isBest=false;//true if this dot is the best dot from previous generation
 
@@ -52,7 +53,7 @@ class Dot {
       this.brain.step++;
       //console.log("alive");
     } else {//if directions ended
-      this.dead = true;
+      //this.dead = true;
       //console.log(this.brain.length, this.brain.step);
       //console.log("dead by brain");
     }
@@ -92,7 +93,7 @@ class Dot {
   calculateFitness() {
     if (this.reachedGoal) {
       this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
-      //console.log(this.fitness);
+      console.log(this.fitness);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
@@ -100,12 +101,11 @@ class Dot {
   }
 
   calculateFitness2() {
-    if (this.reachedGoal) {
+    if (this.reachedGoal || this.dead) {
       this.fitness=0;
-    } else if (this.dead) {//colidiu
-      let distanceGoal = this.pos.dist(goal);
-      this.fitness = 1.0 / (distanceGoal*distanceGoal);
-    } else {
+      console.log("morreu "+this.fitness);
+    } 
+    else {
       let distanceGoal = this.pos.dist(goal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
       
@@ -118,8 +118,8 @@ class Dot {
          }
       }
       
-      this.fitness*=minimunDistance/100;
-      
+      this.fitness*=minimunDistance*this.brain.step/1000;
+      console.log("vivo "+this.fitness);
     }
   }
 

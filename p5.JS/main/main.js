@@ -1,6 +1,6 @@
-var QtdDeBixo = 1000;
+var QtdDeBixo = 100;
 var test = new Population(QtdDeBixo);
-var goal = new Point(300, 2);
+var goal = new Point(300, 300);
 let obstaculos = new Lines();
 obstaculos.add(new Line(new Point(10,10), new Point(100,100)));
 obstaculos.add(new Line(new Point(20,20), new Point(100,100)));
@@ -24,9 +24,9 @@ function setup() {
 function draw() {
   background(255);
    //funciona
-   stroke(126);
-   line(30, 20, 85, 20);
-  obstaculos.show();
+   //stroke(126);
+   //line(30, 20, 85, 20);
+  //obstaculos.show();
     
   //desenhar o objetivo
   fill(255, 0, 0);
