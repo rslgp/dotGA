@@ -7,7 +7,7 @@ class Population {
     this.fitnessSum = 0;
     this.bestDot = 0;
     this.gen = 1;
-    this.minstep = 1000;
+    this.minstep = 1;
     for (let f = 0; f < size; f++) {
       this.dots.push(new Dot());
     }
@@ -25,7 +25,7 @@ class Population {
   //Atualizar os pontos
   update() {
     for (let i = 0; i < this.dots.length; i++) {
-      if (this.dots[i].brain.step > this.minStep) {//se o ponto deus mais passos que o melhor ponto para chegar ao objetivo
+      if (this.dots[i].brain.step > this.minstep) {//se o ponto deus mais passos que o minimo estabelecido
         this.dots[i].dead = true; //ele morre
       } else {
         this.dots[i].update();
@@ -52,6 +52,8 @@ class Population {
 
 
   naturalSelection() {
+    this.minstep += 1;
+    console.log(this.minstep);
     let newDots = []; //proxima geração
     for (let f = 0; f < this.dots.length; f++) {
       newDots.push(new Dot());
@@ -119,9 +121,9 @@ class Population {
     }
     this.bestDot = maxIndex;
     //se esse ponto chegou ao final então resete o numero minimo de passos para chegar ao objetivo
-    if (this.dots[this.bestDot].reachedGoal) {
+    /*if (this.dots[this.bestDot].reachedGoal) {
       this.minStep = this.dots[this.bestDot].brain.step;
       // console.log("step: ", minStep);
-    }
+    }*/
   }
 }
