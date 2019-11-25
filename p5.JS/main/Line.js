@@ -13,8 +13,8 @@ class Line {
     //fill(0,255,0); 
     //stroke(255);
     line(this.p1.x, this.p1.y, this.p2.x, this.p2.y);
-    stroke(126);
+   
 
-    console.log("linha="+this.p1.x+' '+ this.p1.y+' '+  this.p2.x+' '+ this.p2.y);
+//    console.log("linha="+this.p1.x+' '+ this.p1.y+' '+  this.p2.x+' '+ this.p2.y);
   }
 }

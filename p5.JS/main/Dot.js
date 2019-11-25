@@ -99,6 +99,9 @@ class Dot {
     }
   }
 
+  
+
+
   gimmeBaby() {
     let baby = new Dot();
     baby.brain = this.brain.clone();
