@@ -18,7 +18,7 @@ class Population {
     for (let i = 0; i < this.dots.length; i++) {
       this.dots[i].show();
     }
-   // console.log("gen: "+this.gen);
+    // console.log("gen: "+this.gen);
   }
 
   //Atualizar os pontos
@@ -60,7 +60,7 @@ class Population {
 
     newDots[0] = this.dots[this.bestDot].gimmeBaby();
     newDots[0].isBest = true;
-    for (let i = 1; i <newDots.length; i++) {
+    for (let i = 1; i < newDots.length; i++) {
       //escolhe o pai baseado no fitness
       let parent = this.selectParent();
       newDots[i] = parent.gimmeBaby();

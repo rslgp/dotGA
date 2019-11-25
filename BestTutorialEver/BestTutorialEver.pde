@@ -17,7 +17,7 @@ void draw() {
   ellipse(goal.x, goal.y, 10, 10);
 
   //draw obstacle(s)
- lines.show();//here
+ //lines.show();//here
 
 
   if (test.allDotsDead()) {

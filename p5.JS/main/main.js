@@ -1,21 +1,21 @@
-var QtdDeBixo = 300;
+var QtdDeBixo = 100;
 var test = new Population(QtdDeBixo);
-var goal = new Point(400, 10);
+var goal = new Point(300, 300);
 var obstaculos = new Lines();
 
 //limites do grid, usado no Dot.js no outOfGrid()
-var GX1=2;
-var GY1=2;
-var GX2=800;
-var GY2=800;
+var GX1=0;
+var GY1=0;
+var GX2=600;
+var GY2=600;
 
 //var canvas = document.getElementById("canvas");
 //var ctx = canvas.getContext("2d");
 
 function setup() {
-  createCanvas(800, 800);
-  frameRate(100);
-  //teste = new Population(QtdDeBixo);
+ 
+  createCanvas(GX2, GY2);
+  frameRate(110);
 }
 
 
@@ -25,7 +25,13 @@ function draw() {
   //desenhar o objetivo
   fill(255, 0, 0);
   ellipse(goal.x, goal.y, 10, 10);
-
+  fill(0,0,255);
+  ellipse(GX1, GY1, 10, 10);
+  ellipse(GX2, GY1, 10, 10);
+  ellipse(GX1, GY2, 10, 10);
+  ellipse(GX2, GY2, 10, 10);
+  
+  
   obstaculos.show();
 
   if (test.allDotsDead()) {

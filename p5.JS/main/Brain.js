@@ -31,8 +31,7 @@ class Brain {
   }
 
   mutate() {
-
-    let mutationRate = 0.01;
+    let mutationRate = 0.1;
     let randomAngle=0;
     let rand=0;
     for (let i = 0; i < this.directions.length; i++) {
@@ -40,7 +39,6 @@ class Brain {
       if (rand < mutationRate) {
         randomAngle = Math.random()*6.2830;
         //console.log("mutated angle="+randomAngle);
-
         this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
       }
     }

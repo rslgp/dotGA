@@ -2,7 +2,7 @@ class Dot {
   constructor() {
     this.brain = new Brain(1000);//brain will have 1000 instructions
     //start the dots at the bottom of the window with no velocity nor acceleration
-    this.pos = new Point(400, 400);//posicao inicial dos dots aqui
+    this.pos = new Point(400, 600-50);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
     this.dead = false;
@@ -21,7 +21,7 @@ class Dot {
       fill(0, 255, 0);
       ellipse(this.pos.x, this.pos.y, 8, 8);
     } else {
-      fill(255, 255, 0);
+      fill(0);
       ellipse(this.pos.x, this.pos.y, 4, 4);
     }
   }
@@ -69,8 +69,9 @@ class Dot {
   }
 
   update() {
-    if (!this.dead && !this.reachedgoal) {
+    if (!this.dead && !this.reachedGoal) {
       this.move();
+      //console.log(this.pos.dist(goal));
       if (this.outOfGrid()) {//out of grid
         this.dead = true;
         //console.log("dead por aut of grid");

@@ -18,7 +18,7 @@ class Point {
     return Point(this.x, this.y);
   }
 
-  dist(other) {//pra pegar ditancia entre dot e outro ponto (dots[i].dist(goal), por exemplo)
+  dist(other) {//pra pegar ditancia entre dot e outro ponto (dots[i].pos.dist(goal), por exemplo)
     let dx = this.x - other.x;
     let dy = this.y - other.y;
     return Math.hypot(dx, dy);
