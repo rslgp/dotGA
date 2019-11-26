@@ -81,9 +81,9 @@ class Population {
     for (let i = 0; i < newDots.length; i++) {
       this.dots[i] = newDots[i];
     }
-    console.log(this.gen);
+    //console.log(this.gen);
     this.gen++;
-    console.log("gen = "+ this.gen)
+    
   }
 
   calculateFitnessSum() {

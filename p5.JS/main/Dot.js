@@ -84,7 +84,6 @@ class Dot {
     if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
       this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
-
     } else {//if directions ended
       if (choice==1) {
         this.dead = true;
@@ -173,11 +172,11 @@ class Dot {
       this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/Math.abs(area - circle));
       this.fitness*=1/(Math.abs(dw-dg));
 
-      console.log("vivo "+this.fitness);
+      // console.log("vivo "+this.fitness);
     } else if (this.reachedGoal) {
       this.fitness=this.brain.step/1000000;
       //console.log("steps= "+ this.brain.steps);
-      console.log("morreu no objetivo "+this.fitness);
+      // console.log("morreu no objetivo "+this.fitness);
     } else if (this.dead) {
       this.fitness=0;
       //console.log("morreu por parede "+this.fitness);

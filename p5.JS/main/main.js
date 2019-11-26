@@ -5,7 +5,7 @@ let choice = 2;
 var mutation =  0.01;
 if (choice==2) {
   neuronios = 500;
-  QtdDeBixo = 1000;
+  QtdDeBixo = 500;
   mutation = 0.0012;
 } else if (choice==1) {
   QtdDeBixo = 100;
@@ -58,6 +58,7 @@ function draw() {
   if (test.allDotsDead()) {
     console.log(neuronios);
     console.log(increaseMovesBy);
+    console.log("gen = "+ test.gen);
     //algoritmo genético
     if (choice==1) {
       test.calculateFitness();
