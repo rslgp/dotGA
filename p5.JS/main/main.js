@@ -1,8 +1,11 @@
 var QtdDeBixo = 100;
 var increaseMovesBy = 5;
 var neuronios = 5;
-let choice = 2;
+let choice = 1;
 var mutation =  0.01;
+var Xgoal=300, Ygoal=300;
+
+
 if (choice==2) {
   neuronios = 500;
   QtdDeBixo = 500;
@@ -14,11 +17,11 @@ if (choice==2) {
 }
 
 var test = new Population(QtdDeBixo);
-var goal = new Point(300, 300);
+var  goal = new Point(Xgoal, Ygoal);
 var obstaculos = new Lines();
 //obstaculos.add(new Line([300, 10], [300, 500]));
 //obstaculos.add(new Line([305, 11], [305, 500]));
-
+let x1, y1, x2, y2;
 //limites do grid, usado no Dot.js no outOfGrid()
 var GX1=0;
 var GY1=0;
@@ -36,8 +39,25 @@ function setup() {
   frameRate(100);
 }
 
+function mousePressed(event) {
+  console.log(event + "1");
+  console.log("primeiro ponto: "  + mouseX + " " + mouseY);
+  x1=mouseX;
+  y1=mouseY;
+}
+
+function mouseReleased(event) {
+  console.log("segundo ponto: "  + mouseX + " " + mouseY);
+  x2=mouseX;
+  y2=mouseY;
+
+  obstaculos.add(new Line([x1, y1], [x2, y2]));
+}
+
+
 
 function draw() {
+  goal = new Point(Xgoal, Ygoal);
   background(255);
   //funciona
 
