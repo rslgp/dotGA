@@ -4,7 +4,7 @@ var goal = new Point(300, 300);
 let obstaculos = new Lines();
 obstaculos.add(new Line(new Point(10,10), new Point(100,100)));
 obstaculos.add(new Line(new Point(20,20), new Point(100,100)));
-let choice = 2;
+let choice = 1;
 //limites do grid, usado no Dot.js no outOfGrid()
 var GX1=0;
 var GY1=0;

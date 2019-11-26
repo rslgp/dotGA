@@ -51,12 +51,20 @@ class Dot {
     if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
       this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
+      //console.log(this.brain.step);
+      //console.log("moving");
+      if (choice==1) {
+        //
+      } else if (choice==2 /*&& this.brain.step > 1000*/) {
+        //console.log("ended alive");
+        //this.endedAlive=true;
+      }
       //console.log("alive");
     } else {//if directions ended
       if (choice==1) {
         this.dead = true;
       } else if (choice==2) {
-        this.endedAlive=true;
+        this.endedAlive=true;//morre vivo
         this.dead=true;
       }
       //console.log(this.brain.length, this.brain.step);
@@ -125,13 +133,13 @@ class Dot {
 
       this.fitness+=minimunDistance*this.brain.step/1000;
       console.log("vivo "+this.fitness);
+    } else if (this.reachedGoal) {
+      this.fitness=this.brain.step/100;
+      //console.log("steps= "+ this.brain.steps);
+      console.log("morreu no objetivo "+this.fitness);
     } else if (this.dead) {
       this.fitness=0;
       console.log("morreu por parede "+this.fitness);
-    } else if (this.reachedGoal) {
-      this.fitness=this.brain.steps/100;
-      console.log("steps= "+ this.brain.steps);
-      console.log("morreu no objetivo "+this.fitness);
     }
   }
 
