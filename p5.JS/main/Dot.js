@@ -117,7 +117,7 @@ class Dot {
       } else if (this.pos.dist(goal) < 5) {//reached goal
         this.reachedGoal = true;
         //console.log("chegou no objetivo");
-      } else if (this.checkCollision(obstaculos/*isso ta dclarado no main*/)) {//collides with some line
+      } else if (this.checkCollision(obstaculos.lines)) {//collides with some line
         this.dead = true;
         //console.log("dead por obstaculo");
       }
