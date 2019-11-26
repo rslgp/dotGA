@@ -54,7 +54,7 @@ class Dot {
       // Atributos de pontos são .x e .y
       var l2 = dist2(v, w);
 
-      if (l2 === 0) return dist2(this.pos, v.x);
+      if (l2 === 0) return dist2(p, v.x);
 
       var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
       t = Math.max(0, Math.min(1, t));

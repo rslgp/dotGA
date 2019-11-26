@@ -1,9 +1,9 @@
-var QtdDeBixo = 10;
+var QtdDeBixo = 100;
 var test = new Population(QtdDeBixo);
 var goal = new Point(300, 300);
 var obstaculos = new Lines();
 obstaculos.add(new Line([300, 10], [300, 500]));
-obstaculos.add(new Line([305, 500], [305, 500]));
+obstaculos.add(new Line([305, 11], [305, 500]));
 var increaseMovesBy = 5;
 var neuronios = 5;
 let choice = 2;
@@ -28,8 +28,10 @@ function setup() {
 function draw() {
   background(255);
   //funciona
-  obstaculos.show();
-
+  if (choice==1) {
+    obstaculos.show();
+  } else if (choice==2) {
+  }
   //desenhar o objetivo
   fill(255, 0, 0);
   ellipse(goal.x, goal.y, 10, 10);
