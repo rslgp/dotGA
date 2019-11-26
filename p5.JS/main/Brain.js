@@ -44,4 +44,12 @@ class Brain {
     }
     //console.log("Mutacionando com taxa de mutação:", mutationRate);
   }
+
+ increaseMoves() {
+   neuronios += increaseMovesBy;
+   for(var i = 0 ; i< increaseMovesBy ;i++){ //Começa incrementando de 5 em 5 
+     this.directions.push(new Point());
+   }
+  }
+  
 }

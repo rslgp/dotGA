@@ -1,9 +1,11 @@
-var QtdDeBixo = 1000;
+var QtdDeBixo = 10;
 var test = new Population(QtdDeBixo);
 var goal = new Point(300, 2);
 let obstaculos = new Lines();
 obstaculos.add(new Line(new Point(10,10), new Point(100,100)));
 obstaculos.add(new Line(new Point(20,20), new Point(100,100)));
+var increaseMovesBy = 5;
+var neuronios = 5;
 
 //limites do grid, usado no Dot.js no outOfGrid()
 var GX1=0;
@@ -13,7 +15,6 @@ var GY2=600;
 
 //var canvas = document.getElementById("canvas");
 //var ctx = canvas.getContext("2d");
-
 function setup() {
  
   createCanvas(GX2, GY2);

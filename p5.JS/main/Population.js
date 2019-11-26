@@ -7,7 +7,6 @@ class Population {
     this.fitnessSum = 0;
     this.bestDot = 0;
     this.gen = 1;
-    this.minstep = 1;
     for (let f = 0; f < size; f++) {
       this.dots.push(new Dot());
     }
@@ -25,12 +24,8 @@ class Population {
   //Atualizar os pontos
   update() {
     for (let i = 0; i < this.dots.length; i++) {
-      if (this.dots[i].brain.step > this.minstep) {//se o ponto deus mais passos que o minimo estabelecido
-        this.dots[i].dead = true; //ele morre
-      } else {
         this.dots[i].update();
       }
-    }
   }
 
   //calculo da fitness function
@@ -42,18 +37,20 @@ class Population {
 
   //lesgou checar se estão todos mortos ou que ja tenham chegados
   allDotsDead() {
-    for (let i = 0; i<this.dots.length; i++) {
+    for (let i = 0; i< this.dots.length; i++) {
       if (!this.dots[i].dead && !this.dots[i].reachedGoal) {
         return false;
       }
     }
+    for (let i = 0; i<this.dots.length; i++) {
+      this.dots[i].brain.increaseMoves();
+      }
     return true;
   }
 
 
   naturalSelection() {
-    this.minstep += 1;
-    console.log(this.minstep);
+    
     let newDots = []; //proxima geração
     for (let f = 0; f < this.dots.length; f++) {
       newDots.push(new Dot());
@@ -72,6 +69,7 @@ class Population {
     for (let i = 0; i < newDots.length; i++) {
       this.dots[i] = newDots[i];
     }
+    console.log(this.gen);
     this.gen++;
   }
 
@@ -89,7 +87,7 @@ class Population {
   //since dots with a higher fitness function add more to the running sum then they have a higher chance of being chosen
 
   selectParent() {
-    let rand = Math.random()*this.fitnessSum;
+    var rand = Math.random()*this.fitnessSum;
     let runningSum = 0;
 
     for (let i =0; i < this.dots.length; i++) {

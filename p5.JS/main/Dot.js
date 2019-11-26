@@ -5,7 +5,7 @@ class Dot {
     this.pos = new Point(300, 600-20);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
-    this.brain = new Brain(1000);//brain will have 1000 instructions
+    this.brain = new Brain(neuronios);//cerebro vai começar com 5 instruções
 
     this.dead = false;
     this.reachedGoal = false;
@@ -92,11 +92,13 @@ class Dot {
   calculateFitness() {
     if (this.reachedGoal) {
       this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
-      console.log(this.fitness);
+      console.log(this.brain.step);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
+      console.log(distanceGoal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
     }
+    console.log(this.fitness);
   }
 
   
