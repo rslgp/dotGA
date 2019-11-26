@@ -30,46 +30,37 @@ class Dot {
 	}
   
 	collide(line) {//TODO
-	  function sqr (x) {
+	  function quadrado (x) {
 		return x * x;
 	  }
-	  function dist22 (v, w) {
-		return sqr(line.p1.x - line.p2.x) + sqr(line.p1.y - line.p2.y);
-	  }
+	  
 	  function dist2 (v, w) {
-		return sqr(v.p1.x - w) + sqr(v[1] - w[1]);
+		return sqr(v.x - w.x) + sqr(v.y - w.y);
 	  }
 	  
-	  // p - point
-	  // v - start point of segment
-	  // w - end point of segment
+	  // p - ponto
+	  // v - começo da reta
+	  // w - fim    da reta
+	  
 	  function distToSegmentSquared (p, v, w) {
-		var l2 = dist22(v, w);
+		// Os pontos entram aqui como p, v, w
+		// Atributos de pontos são .x e .y
+		var l2 = dist2(v, w);
+		
 		if (l2 === 0) return dist2(p, v);
-		var t = ((line.pos.x - line.p1.x) * (line.p2.x - line.p1.x) + (line.p1.y - line.p1.y) * (line.p2.y - line.p1.y)) / l2;
+		
+		var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
 		t = Math.max(0, Math.min(1, t));
-		return dist2(p, [ line.p1.x + t * (line.p2.x - line.p1.x), line.p1.y + t * (line.p2.y - line.p1.y) ]);
+		return dist2(p, [ v.x + t * (w.x - v.x), v.y + t * (w.y - v.y) ]);
 	  }
-	  // p - point
-	  // v - start point of segment
-	  // w - end point of segment
+	  
   
 	  let output = (Math.sqrt(distToSegmentSquared(this.pos, this.p1, this.p2)) < 5);
+	  // São passados 3 pontos para a função
 	  console.log("Terminei o collide ", output);
 	  return output;
 	}
-  
-	checkCollision(lines) {
-	  console.log(lines.lines.length);
-	  for (let i = 0; i < lines.lines.length; i++) {
-		let cc = this.collide(lines.lines[i]);
-		console.log("Terminei check: ", lines.lines[i].p1.x);
-		if (cc) {
-		  return true;
-		}
-	  }
-	  return false;
-	}
+
   
   
 	//-------------------------------------------------------------------------------
