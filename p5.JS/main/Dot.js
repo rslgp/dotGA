@@ -5,7 +5,7 @@ class Dot {
     this.pos = new Point(300, 600-20);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
-    this.brain = new Brain(2000);//brain will have 1000 instructions
+    this.brain = new Brain(1000);//brain will have 1000 instructions
 
     this.dead = false;
     this.endedAlive=false;
@@ -147,13 +147,16 @@ class Dot {
           area+=this.pos.dist(test.dots[i].pos);
         }
       }
-      
-      let constante = 2000;
-      this.fitness=constante*(Math.sqrt(dw*dw*dw*dmin)/(Math.sqrt(dg*dg*dg*dmax)))*(1/Math.abs(area - circle));
-      
+
+      let constante = 20000;
+      this.fitness=this.brain.step/10000;
+      this.fitness*=constante*(Math.sqrt(dw*dw*dw*dmin)/(Math.sqrt(dg*dg*dmax*2)))*(1/Math.abs(area - circle));
+      if (dw>dg) {
+        this.fitness*=1/(Math.abs(dw-dg));
+      }
       console.log("vivo "+this.fitness);
     } else if (this.reachedGoal) {
-      this.fitness=this.brain.step/10000;
+      this.fitness=this.brain.step/1000000;
       //console.log("steps= "+ this.brain.steps);
       console.log("morreu no objetivo "+this.fitness);
     } else if (this.dead) {
