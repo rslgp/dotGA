@@ -44,6 +44,8 @@ function draw() {
 
 
   if (test.allDotsDead()) {
+    console.log(neuronios);
+    console.log(increaseMovesBy);
     //algoritmo genético
     test.calculateFitness();
     test.naturalSelection();

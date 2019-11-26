@@ -29,7 +29,6 @@ class Dot {
     }
   }
   collide(line) {//TODO
-    console.log("O X:",this.pos.x);
     function quadrado (x) {
       return x * x;
     }
@@ -61,7 +60,6 @@ class Dot {
     return dist22(p, [ v.x + t * (w.x - v.x), v.y + t * (w.y - v.y) ]);
     }
     
-    console.log(Math.sqrt(distToSegmentSquared(this.pos, line.p1, line.p2)));
     let output = (Math.sqrt(distToSegmentSquared(this.pos, line.p1, line.p2)) < 5);
     // São passados 3 pontos para a função
     //console.log("Terminei o collide ", output);
@@ -71,7 +69,6 @@ class Dot {
   checkCollision(lines) {
     //console.log(lines.lines[0].p1.x.y);
     for (let i = 0; i < lines.length; i++) {
-      console.log(lines[0]);
       if (this.collide(lines[i])) {
         return true;
       }
