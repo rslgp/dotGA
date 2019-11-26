@@ -9,7 +9,7 @@
   <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
   <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
   <script language="javascript" type="text/javascript" src="Brain.js"></script>
-  <script language="javascript" type="text/javascript" src="Dot.js"></script>
+  <script language="javascript" type="text/javascript" src="p5js-temp-Dot7461527727376754503.js"></script>
   <script language="javascript" type="text/javascript" src="Line.js"></script>
   <script language="javascript" type="text/javascript" src="Lines.js"></script>
   <script language="javascript" type="text/javascript" src="Point.js"></script>
@@ -26,21 +26,24 @@
   <h1>dotGA</h1>
   <div class="op">
     <div>
+      <input class="button" type="button" id="rodar" onClick="rodar()" value="Começar"></button>
+    </div>
+    <div>
       <input class="numberbox" type="number" id="x" min="1" value="300">
       <input class="numberbox" type="number" id="y" min="1" value="300">
-      <input class="button" type="button" id="mudarGoal" value="Mudar Goal"></button>
+      <input class="button" type="button" id="mudarGoal" onClick="mudarGoal()" value="Mudar Goal"></button>
     </div>
     <div>
       <input class="numberbox" type="number" id="tamPopulacao" min="1" value="100">
-      <input class="button" type="button" id="mudarPopulacao" value="Mudar População"></button>
+      <input class="button" type="button" id="mudarPopulacao" onClick="mudarPopulacao()" value="Mudar População"></button>
     </div>
     <div>
       <input class="numberbox" type="number" id="movimento" min="1" value="40">
-      <input class="button" type="button" id="mudarMovimento" value="Mudar Movimento"></button>
+      <input class="button" type="button" id="mudarMovimento" onClick="mudarMovimento()" value="Mudar Movimento"></button>
     </div>
     <div>
       <input class="numberbox" type="number" id="geracao" min="1" value="3">
-      <input class="button" type="button" id="mudarGeracao" value="Mudar Geração"></button>
+      <input class="button" type="button" id="mudarGeracao" onClick="mudarGeracao()" value="Mudar Geração"></button>
     </div>
   </div>
 </body>

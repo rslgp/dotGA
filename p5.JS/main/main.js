@@ -1,10 +1,11 @@
 var QtdDeBixo = 100;
 var increaseMovesBy = 5;
 var neuronios = 5;
+var periodoDeAtualizacaoDaPopulacao=0;
 let choice = 1;
 var mutation =  0.01;
 var Xgoal=300, Ygoal=300;
-
+let rodando = 0;
 
 if (choice==2) {
   neuronios = 500;
@@ -17,10 +18,9 @@ if (choice==2) {
 }
 
 var test = new Population(QtdDeBixo);
-var  goal = new Point(Xgoal, Ygoal);
+var goal = new Point(Xgoal, Ygoal);
 var obstaculos = new Lines();
-//obstaculos.add(new Line([300, 10], [300, 500]));
-//obstaculos.add(new Line([305, 11], [305, 500]));
+
 let x1, y1, x2, y2;
 //limites do grid, usado no Dot.js no outOfGrid()
 var GX1=0;
@@ -28,11 +28,6 @@ var GY1=0;
 var GX2=600;
 var GY2=600;
 
-//var canvas = document.getElementById("canvas");
-//var ctx = canvas.getContext("2d");
-
-//var canvas = document.getElementById("canvas");
-//var ctx = canvas.getContext("2d");
 function setup() {
 
   createCanvas(GX2, GY2);
@@ -57,6 +52,9 @@ function mouseReleased(event) {
 
 
 function draw() {
+  if(!rodando){
+    return;
+  }
   goal = new Point(Xgoal, Ygoal);
   background(255);
   //funciona
@@ -97,4 +95,31 @@ function draw() {
     }
     test.show();
   }
+}
+
+//==========================================
+
+function mudarGoal (){
+  Xgoal = document.getElementById('x').value;
+  Ygoal = document.getElementById('y').value;
+ // console.log(goal);
+}
+
+function mudarPopulacao(){
+  QtdDeBixo = document.getElementById('tamPopulacao').value;
+}
+
+function mudarMovimento(){
+  increaseMovesBy = document.getElementById('movimento').value;
+}
+
+function mudarGeracao(){//TODO: VAI BRUNO
+  periodoDeAtualizacaoDaPopulacao=document.getElementById('geracao').value;;
+}
+
+function rodar(){
+   rodando^=1; 
+   if(rodando){
+      test = new Population(QtdDeBixo);
+   }
 }
