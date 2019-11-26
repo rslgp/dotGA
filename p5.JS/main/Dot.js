@@ -5,7 +5,7 @@ class Dot {
     this.pos = new Point(300, 600-20);//posicao inicial dos dots aqui
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
-    this.brain = new Brain(1000);//brain will have 1000 instructions
+    this.brain = new Brain(neuronios);//cerebro vai começar com 5 instruções
 
     this.dead = false;
     this.endedAlive=false;
@@ -29,15 +29,48 @@ class Dot {
       ellipse(this.pos.x, this.pos.y, 4, 4);
     }
   }
-
   collide(line) {//TODO
-    //checar colisao de linha com this.pos
-    return false;
+    function quadrado (x) {
+      return x * x;
+    }
+
+    let p = this.pos.copy();
+    let v = line.p1.copy();
+    let w = line.p2.copy();
+
+    function dist2 (v, w) {
+      return quadrado(v.x - w.x) + quadrado(v.y - w.y);
+    }
+    function dist22 (v, w) {
+      return quadrado(v.x - w[0]) + quadrado(v.y - w[1]);
+    }
+
+    // p - ponto
+    // v - começo da reta
+    // w - fim    da reta
+
+    function distToSegmentSquared (p, v, w) {
+      // Os pontos entram aqui como p, v, w
+      // Atributos de pontos são .x e .y
+      var l2 = dist2(v, w);
+
+      if (l2 === 0) return dist2(this.pos, v.x);
+
+      var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+      t = Math.max(0, Math.min(1, t));
+      return dist22(p, [ v.x + t * (w.x - v.x), v.y + t * (w.y - v.y) ]);
+    }
+
+    let output = (Math.sqrt(distToSegmentSquared(this.pos, line.p1, line.p2)) < 5);
+    // São passados 3 pontos para a função
+    //console.log("Terminei o collide ", output);
+    return output;
   }
 
   checkCollision(lines) {
+    //console.log(lines.lines[0].p1.x.y);
     for (let i = 0; i < lines.length; i++) {
-      if (this.collide(line)) {
+      if (this.collide(lines[i])) {
         return true;
       }
     }
@@ -93,13 +126,9 @@ class Dot {
         this.dead = true;
         //console.log("dead por aut of grid");
       } else if (this.pos.dist(goal) < 5) {//reached goal
-        if (choice==1) {
-          this.reachedGoal = true;
-          //console.log("chegou no objetivo");
-        } else if (choice ==2) {
-          this.reachedGoal=true;
-        }
-      } else if (this.checkCollision(obstaculos/*isso ta dclarado no main*/)) {//collides with some line
+        this.reachedGoal = true;
+        //console.log("chegou no objetivo");
+      } else if (this.checkCollision(obstaculos.lines)) {//collides with some line
         this.dead = true;
         //console.log("dead por obstaculo");
       }
@@ -110,7 +139,6 @@ class Dot {
   calculateFitness() {
     if (this.reachedGoal) {
       this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
-      console.log(this.fitness);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);

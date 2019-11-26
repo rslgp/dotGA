@@ -7,7 +7,6 @@ class Population {
     this.fitnessSum = 0;
     this.bestDot = 0;
     this.gen = 1;
-    this.minstep = 50000;
     for (let f = 0; f < size; f++) {
       this.dots.push(new Dot());
     }
@@ -25,11 +24,7 @@ class Population {
   //Atualizar os pontos
   update() {
     for (let i = 0; i < this.dots.length; i++) {
-      if (this.dots[i].brain.step > this.minStep) {//se o ponto deus mais passos que o melhor ponto para chegar ao objetivo
-        this.dots[i].dead = true; //ele morre
-      } else {
-        this.dots[i].update();
-      }
+      this.dots[i].update();
     }
   }
 
@@ -40,13 +35,13 @@ class Population {
     }
   }
 
-update2(){
-   for (let i = 0; i < this.dots.length; i++) {
-        this.dots[i].update();
+  update2() {
+    for (let i = 0; i < this.dots.length; i++) {
+      this.dots[i].update();
     }
-}
+  }
 
-calculateFitness2() {
+  calculateFitness2() {
     for (let i = 0; i < this.dots.length; i++) {
       this.dots[i].calculateFitness2();
     }
@@ -54,16 +49,20 @@ calculateFitness2() {
 
   //lesgou checar se estão todos mortos ou que ja tenham chegados
   allDotsDead() {
-    for (let i = 0; i<this.dots.length; i++) {
+    for (let i = 0; i< this.dots.length; i++) {
       if (!this.dots[i].dead && !this.dots[i].reachedGoal) {
         return false;
       }
+    }
+    for (let i = 0; i<this.dots.length; i++) {
+      this.dots[i].brain.increaseMoves();
     }
     return true;
   }
 
 
   naturalSelection() {
+
     let newDots = []; //proxima geração
     for (let f = 0; f < this.dots.length; f++) {
       newDots.push(new Dot());
@@ -82,6 +81,7 @@ calculateFitness2() {
     for (let i = 0; i < newDots.length; i++) {
       this.dots[i] = newDots[i];
     }
+    console.log(this.gen);
     this.gen++;
     console.log("gen = "+ this.gen)
   }
@@ -100,7 +100,7 @@ calculateFitness2() {
   //since dots with a higher fitness function add more to the running sum then they have a higher chance of being chosen
 
   selectParent() {
-    let rand = Math.random()*this.fitnessSum;
+    var rand = Math.random()*this.fitnessSum;
     let runningSum = 0;
 
     for (let i =0; i < this.dots.length; i++) {
@@ -132,9 +132,9 @@ calculateFitness2() {
     }
     this.bestDot = maxIndex;
     //se esse ponto chegou ao final então resete o numero minimo de passos para chegar ao objetivo
-    if (this.dots[this.bestDot].reachedGoal) {
-      this.minStep = this.dots[this.bestDot].brain.step;
-      // console.log("step: ", minStep);
-    }
+    /*if (this.dots[this.bestDot].reachedGoal) {
+     this.minStep = this.dots[this.bestDot].brain.step;
+     // console.log("step: ", minStep);
+     }*/
   }
 }

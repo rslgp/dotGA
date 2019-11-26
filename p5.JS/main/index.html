@@ -2,11 +2,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dotGA</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <!-- Importar um css dps -->
 
   <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
   <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
   <script language="javascript" type="text/javascript" src="Brain.js"></script>
-  <script language="javascript" type="text/javascript" src="p5js-temp-Dot6238984389256516783.js"></script>
+  <script language="javascript" type="text/javascript" src="Dot.js"></script>
   <script language="javascript" type="text/javascript" src="Line.js"></script>
   <script language="javascript" type="text/javascript" src="Lines.js"></script>
   <script language="javascript" type="text/javascript" src="Point.js"></script>
@@ -20,6 +23,23 @@
 </head>
 
 <body>
-  <canvas id="canvas"></canvas>
+  <h1>dotGA</h1>
+  <div class="op">
+    <div>
+      <input class="button" type="button" id="novoObstaculo" value="Novo Obstaculo"></button>
+    </div>
+    <div>
+      <input class="numberbox" type="number" id="tamPopulacao" min="1" value="100">
+      <input class="button" type="button" id="mudarPopulacao" value="Mudar População"></button>
+    </div>
+    <div>
+      <input class="numberbox" type="number" id="movimento" min="1" value="40">
+      <input class="button" type="button" id="mudarMovimento" value="Mudar Movimento"></button>
+    </div>
+    <div>
+      <input class="numberbox" type="number" id="geracao" min="1" value="3">
+      <input class="button" type="button" id="mudarGeracao" value="Mudar Geração"></button>
+    </div>
+  </div>
 </body>
 </html>
