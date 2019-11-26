@@ -31,7 +31,7 @@ class Brain {
   }
 
   mutate() {
-    let mutationRate = 0.05;
+    let mutationRate = 0.0012;
     let randomAngle=0;
     let rand=0;
     for (let i = 0; i < this.directions.length; i++) {
