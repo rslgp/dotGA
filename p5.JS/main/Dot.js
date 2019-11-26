@@ -150,7 +150,7 @@ class Dot {
 
       let constante = 20000;
       this.fitness=this.brain.step/1000;
-      this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*2)))*(1/Math.abs(area - circle));
+      this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/Math.abs(area - circle));
       this.fitness*=1/(Math.abs(dw-dg));
 
       console.log("vivo "+this.fitness);
