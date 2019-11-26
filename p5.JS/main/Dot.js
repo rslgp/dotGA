@@ -85,14 +85,6 @@ class Dot {
       this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
 
-      //console.log("moving");
-      if (choice==1) {
-        //
-      } else if (choice==2 /*&& this.brain.step > 1000*/) {
-        //console.log("ended alive");
-        //this.endedAlive=true;
-      }
-      //console.log("alive");
     } else {//if directions ended
       if (choice==1) {
         this.dead = true;

@@ -31,12 +31,7 @@ class Brain {
   }
 
   mutate() {
-    let mutationRate = 0.0012;
-    if(choice==1){
-        let mutationRate = 0.01;
-    }if(choice==2){
-         mutationRate = 0.0012; 
-    }
+    let mutationRate = mutation;
     let randomAngle=0;
     let rand=0;
     for (let i = 0; i < this.directions.length; i++) {
@@ -52,6 +47,7 @@ class Brain {
 
   increaseMoves() {
     neuronios += increaseMovesBy;
+    this.length=neuronios;
     let randomAngle = 0;
     for (var i = 0; i< increaseMovesBy; i++) { //Começa incrementando de 5 em 5 
       this.directions.push(new Point());
