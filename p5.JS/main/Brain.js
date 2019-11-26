@@ -49,6 +49,7 @@ class Brain {
    neuronios += increaseMovesBy;
    for(var i = 0 ; i< increaseMovesBy ;i++){ //Começa incrementando de 5 em 5 
      this.directions.push(new Point());
+     this.randomize();
    }
   }
   

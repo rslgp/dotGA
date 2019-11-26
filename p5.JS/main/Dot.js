@@ -92,13 +92,10 @@ class Dot {
   calculateFitness() {
     if (this.reachedGoal) {
       this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
-      console.log(this.brain.step);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
-      console.log(distanceGoal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
     }
-    console.log(this.fitness);
   }
 
   
