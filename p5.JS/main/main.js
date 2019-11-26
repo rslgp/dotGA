@@ -2,7 +2,8 @@ var QtdDeBixo = 10;
 var test = new Population(QtdDeBixo);
 var goal = new Point(300, 2);
 var obstaculos = new Lines();
-obstaculos.add(new Line([500,550],[85,550]));
+obstaculos.add(new Line([300,10],[300,500]));
+obstaculos.add(new Line([305,500],[305,500]));
 var increaseMovesBy = 5;
 var neuronios = 5;
 
@@ -27,9 +28,7 @@ function setup() {
 function draw() {
   background(255);
    //funciona
-   stroke(126);
-   line(500, 550, 85, 550);
-  obstaculos.show();
+    obstaculos.show();
     
   //desenhar o objetivo
   fill(255, 0, 0);
