@@ -45,12 +45,15 @@ class Brain {
     //console.log("Mutacionando com taxa de mutação:", mutationRate);
   }
 
- increaseMoves() {
-   neuronios += increaseMovesBy;
-   for(var i = 0 ; i< increaseMovesBy ;i++){ //Começa incrementando de 5 em 5 
-     this.directions.push(new Point());
-     this.randomize();
-   }
+  increaseMoves() {
+    neuronios += increaseMovesBy;
+    let randomAngle = 0;
+    for (var i = 0; i< increaseMovesBy; i++) { //Começa incrementando de 5 em 5 
+      this.directions.push(new Point());
+      randomAngle = Math.random()*6.2830;
+      //console.log("mutated angle="+randomAngle);
+      this.directions[this.directions.length-1].fromAngle(randomAngle); //PVector.fromAngle
+      //this.randomize();
+    }
   }
-  
 }
