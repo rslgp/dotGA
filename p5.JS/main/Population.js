@@ -55,7 +55,7 @@ calculateFitness2() {
   //lesgou checar se estão todos mortos ou que ja tenham chegados
   allDotsDead() {
     for (let i = 0; i<this.dots.length; i++) {
-      if (!this.dots[i].dead && !this.dots[i].reachedGoal) {
+      if (!this.dots[i].dead && !this.dots[i].reachedGoal ) {
         return false;
       }
     }

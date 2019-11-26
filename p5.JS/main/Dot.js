@@ -6,7 +6,7 @@ class Dot {
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
     this.brain = new Brain(2000);//brain will have 1000 instructions
-    
+
     this.dead = false;
     this.endedAlive=false;
     this.reachedGoal = false;
@@ -49,17 +49,13 @@ class Dot {
   //moves the dot according to the brains directions
   move() {
     if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
-      if(choice==2){
-        this.acc = this.brain.directions[this.brain.step];
-        this.brain.step++;
-      }else if (choice==2 && this.brain.step > 100){
-          this.endedAlive=true;
-      }
+      this.acc = this.brain.directions[this.brain.step];
+      this.brain.step++;
       //console.log("alive");
     } else {//if directions ended
       if (choice==1) {
         this.dead = true;
-      }else if(choice==2){
+      } else if (choice==2) {
         this.endedAlive=true;
         this.dead=true;
       }
@@ -92,10 +88,9 @@ class Dot {
         if (choice==1) {
           this.reachedGoal = true;
           //console.log("chegou no objetivo");
-        }else if(choice ==2){
+        } else if (choice ==2) {
           this.reachedGoal=true;
         }
-        
       } else if (this.checkCollision(obstaculos/*isso ta dclarado no main*/)) {//collides with some line
         this.dead = true;
         //console.log("dead por obstaculo");
@@ -113,9 +108,9 @@ class Dot {
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
     }
   }
-//-----------------------------------------------------------------------------
+  //-----------------------------------------------------------------------------
   calculateFitness2() {
-    if(this.endedAlive){
+    if (this.endedAlive) {
       let distanceGoal = this.pos.dist(goal);
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
 
@@ -130,15 +125,14 @@ class Dot {
 
       this.fitness+=minimunDistance*this.brain.step/1000;
       console.log("vivo "+this.fitness);
-    }else if (this.dead) {
+    } else if (this.dead) {
       this.fitness=0;
       console.log("morreu por parede "+this.fitness);
-    } else if(this.reachedGoal){
+    } else if (this.reachedGoal) {
       this.fitness=this.brain.steps/100;
       console.log("steps= "+ this.brain.steps);
       console.log("morreu no objetivo "+this.fitness);
     }
-    
   }
 
   gimmeBaby() {
