@@ -51,7 +51,7 @@ class Dot {
     if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
       this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
-      
+
       //console.log("moving");
       if (choice==1) {
         //
@@ -117,29 +117,48 @@ class Dot {
     }
   }
   //-----------------------------------------------------------------------------
+  distToWall() {
+    let dup=Math.abs(this.pos.x - GX1);
+    let dbot=Math.abs(this.pos.x - GX2);
+    let dleft=Math.abs(this.pos.y - GY1);
+    let dright=Math.abs(this.pos.y - GY2);
+
+    let dis = Math.min(dup, dbot);
+    dis = Math.min(dis, dleft);
+    dis = Math.min(dis, dright);
+    return dis;
+  }
+
   calculateFitness2() {
     if (this.endedAlive) {
-      let distanceGoal = this.pos.dist(goal);
-      this.fitness = 1.0 / (distanceGoal*distanceGoal);
-
-      let minimunDistance=100000;//guarda a menor distancia entre 2 pontos diferentes
+      let dg = this.pos.dist(goal);
+      let dw = this.distToWall();
+      let dmin=100000;//guarda a menor distancia entre 2 pontos diferentes
+      let dmax=0;
+      let area = 0;
+      let radius = 150;
+      let circle = 6.2830*150;
       for (let i=0; i<test.dots.length; i++) {
         if (this.pos.equal(test.dots[i].pos)) {
           continue;//nao checa pontos na msma posicao
         } else {
-          minimunDistance = Math.min(minimunDistance, this.pos.dist(test.dots[i].pos));
+          dmin = Math.min(dmin, this.pos.dist(test.dots[i].pos));
+          dmax = Math.max(dmax, this.pos.dist(test.dots[i].pos));
+          area+=this.pos.dist(test.dots[i].pos);
         }
       }
-
-      this.fitness+=minimunDistance*this.brain.step/1000;
+      
+      let constante = 2000;
+      this.fitness=constante*(Math.sqrt(dw*dw*dw*dmin)/(Math.sqrt(dg*dg*dg*dmax)))*(1/Math.abs(area - circle));
+      
       console.log("vivo "+this.fitness);
     } else if (this.reachedGoal) {
-      this.fitness=this.brain.step/100;
+      this.fitness=this.brain.step/10000;
       //console.log("steps= "+ this.brain.steps);
       console.log("morreu no objetivo "+this.fitness);
     } else if (this.dead) {
       this.fitness=0;
-      console.log("morreu por parede "+this.fitness);
+      //console.log("morreu por parede "+this.fitness);
     }
   }
 
