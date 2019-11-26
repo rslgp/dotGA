@@ -149,7 +149,7 @@ class Dot {
       }
 
       let constante = 20000;
-      this.fitness=this.brain.step/10000;
+      this.fitness=this.brain.step/1000;
       this.fitness*=constante*(Math.sqrt(dw*dw*dw*dmin)/(Math.sqrt(dg*dg*dmax*2)))*(1/Math.abs(area - circle));
       if (dw>dg) {
         this.fitness*=1/(Math.abs(dw-dg));
