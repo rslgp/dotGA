@@ -1,9 +1,8 @@
-var QtdDeBixo = 100;
+var QtdDeBixo = 10;
 var test = new Population(QtdDeBixo);
 var goal = new Point(300, 2);
-let obstaculos = new Lines();
-obstaculos.add(new Line(new Point(10,10), new Point(100,100)));
-obstaculos.add(new Line(new Point(20,20), new Point(100,100)));
+var obstaculos = new Lines();
+obstaculos.add(new Line([500,550],[85,550]));
 var increaseMovesBy = 5;
 var neuronios = 5;
 
@@ -12,6 +11,9 @@ var GX1=0;
 var GY1=0;
 var GX2=600;
 var GY2=600;
+
+//var canvas = document.getElementById("canvas");
+//var ctx = canvas.getContext("2d");
 
 //var canvas = document.getElementById("canvas");
 //var ctx = canvas.getContext("2d");
@@ -26,7 +28,7 @@ function draw() {
   background(255);
    //funciona
    stroke(126);
-   line(30, 20, 85, 20);
+   line(500, 550, 85, 550);
   obstaculos.show();
     
   //desenhar o objetivo

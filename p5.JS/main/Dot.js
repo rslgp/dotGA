@@ -28,15 +28,51 @@ class Dot {
       ellipse(this.pos.x, this.pos.y, 4, 4);
     }
   }
-
   collide(line) {//TODO
-    //checar colisao de linha com this.pos
-    return false;
+    console.log("O X:",this.pos.x);
+    function quadrado (x) {
+      return x * x;
+    }
+    
+    let p = this.pos.copy();
+    let v = line.p1.copy();
+    let w = line.p2.copy();
+    
+    function dist2 (v, w) {
+      return quadrado(v.x - w.x) + quadrado(v.y - w.y);
+    }
+    function dist22 (v, w) {
+      return quadrado(v.x - w[0]) + quadrado(v.y - w[1]);
+    }
+
+    // p - ponto
+    // v - começo da reta
+    // w - fim    da reta
+    
+    function distToSegmentSquared (p, v, w) {
+    // Os pontos entram aqui como p, v, w
+    // Atributos de pontos são .x e .y
+    var l2 = dist2(v, w);
+    
+    if (l2 === 0) return dist2(this.pos, v.x);
+    
+    var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+    t = Math.max(0, Math.min(1, t));
+    return dist22(p, [ v.x + t * (w.x - v.x), v.y + t * (w.y - v.y) ]);
+    }
+    
+    console.log(Math.sqrt(distToSegmentSquared(this.pos, line.p1, line.p2)));
+    let output = (Math.sqrt(distToSegmentSquared(this.pos, line.p1, line.p2)) < 5);
+    // São passados 3 pontos para a função
+    //console.log("Terminei o collide ", output);
+    return output;
   }
 
   checkCollision(lines) {
+    //console.log(lines.lines[0].p1.x.y);
     for (let i = 0; i < lines.length; i++) {
-      if (this.collide(line)) {
+      console.log(lines[0]);
+      if (this.collide(lines[i])) {
         return true;
       }
     }
