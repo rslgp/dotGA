@@ -51,7 +51,7 @@ class Dot {
     if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
       this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
-      //console.log(this.brain.step);
+      
       //console.log("moving");
       if (choice==1) {
         //
