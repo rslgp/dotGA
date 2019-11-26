@@ -41,4 +41,8 @@ class Point {
       this.y = Math.sin(lim);
     }
   }
+
+  equal(p) {
+    return this.x==p.x && this.y==p.y;
+  }
 }

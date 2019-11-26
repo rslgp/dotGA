@@ -8,6 +8,7 @@ class Dot {
     this.brain = new Brain(neuronios);//cerebro vai começar com 5 instruções
 
     this.dead = false;
+    this.endedAlive=false;
     this.reachedGoal = false;
     this.isBest=false;//true if this dot is the best dot from previous generation
 
@@ -32,11 +33,11 @@ class Dot {
     function quadrado (x) {
       return x * x;
     }
-    
+
     let p = this.pos.copy();
     let v = line.p1.copy();
     let w = line.p2.copy();
-    
+
     function dist2 (v, w) {
       return quadrado(v.x - w.x) + quadrado(v.y - w.y);
     }
@@ -47,19 +48,19 @@ class Dot {
     // p - ponto
     // v - começo da reta
     // w - fim    da reta
-    
+
     function distToSegmentSquared (p, v, w) {
-    // Os pontos entram aqui como p, v, w
-    // Atributos de pontos são .x e .y
-    var l2 = dist2(v, w);
-    
-    if (l2 === 0) return dist2(p, v.x);
-    
-    var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
-    t = Math.max(0, Math.min(1, t));
-    return dist22(p, [ v.x + t * (w.x - v.x), v.y + t * (w.y - v.y) ]);
+      // Os pontos entram aqui como p, v, w
+      // Atributos de pontos são .x e .y
+      var l2 = dist2(v, w);
+
+      if (l2 === 0) return dist2(p, v.x);
+
+      var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+      t = Math.max(0, Math.min(1, t));
+      return dist22(p, [ v.x + t * (w.x - v.x), v.y + t * (w.y - v.y) ]);
     }
-    
+
     let output = (Math.sqrt(distToSegmentSquared(this.pos, line.p1, line.p2)) < 5);
     // São passados 3 pontos para a função
     //console.log("Terminei o collide ", output);
@@ -83,9 +84,22 @@ class Dot {
     if (this.brain.directions.length > this.brain.step) {//if there are still directions to go
       this.acc = this.brain.directions[this.brain.step];
       this.brain.step++;
+
+      //console.log("moving");
+      if (choice==1) {
+        //
+      } else if (choice==2 /*&& this.brain.step > 1000*/) {
+        //console.log("ended alive");
+        //this.endedAlive=true;
+      }
       //console.log("alive");
     } else {//if directions ended
-      this.dead = true;
+      if (choice==1) {
+        this.dead = true;
+      } else if (choice==2) {
+        this.endedAlive=true;//morre vivo
+        this.dead=true;
+      }
       //console.log(this.brain.length, this.brain.step);
       //console.log("dead by brain");
     }
@@ -105,7 +119,7 @@ class Dot {
   }
 
   update() {
-    if (!this.dead && !this.reachedGoal) {
+    if (!this.dead && !this.reachedGoal && !this.endedAlive) {
       this.move();
       //console.log(this.pos.dist(goal));
       if (this.outOfGrid()) {//out of grid
@@ -130,9 +144,53 @@ class Dot {
       this.fitness = 1.0 / (distanceGoal*distanceGoal);
     }
   }
+  //-----------------------------------------------------------------------------
+  distToWall() {
+    let dup=Math.abs(this.pos.x - GX1);
+    let dbot=Math.abs(this.pos.x - GX2);
+    let dleft=Math.abs(this.pos.y - GY1);
+    let dright=Math.abs(this.pos.y - GY2);
 
-  
+    let dis = Math.min(dup, dbot);
+    dis = Math.min(dis, dleft);
+    dis = Math.min(dis, dright);
+    return dis;
+  }
 
+  calculateFitness2() {
+    if (this.endedAlive) {
+      let dg = this.pos.dist(goal);
+      let dw = this.distToWall();
+      let dmin=100000;//guarda a menor distancia entre 2 pontos diferentes
+      let dmax=0;
+      let area = 0;
+      let radius = 150;
+      let circle = 6.2830*150;
+      for (let i=0; i<test.dots.length; i++) {
+        if (this.pos.equal(test.dots[i].pos)) {
+          continue;//nao checa pontos na msma posicao
+        } else {
+          dmin = Math.min(dmin, this.pos.dist(test.dots[i].pos));
+          dmax = Math.max(dmax, this.pos.dist(test.dots[i].pos));
+          area+=this.pos.dist(test.dots[i].pos);
+        }
+      }
+
+      let constante = 20000;
+      this.fitness=this.brain.step/1000;
+      this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/Math.abs(area - circle));
+      this.fitness*=1/(Math.abs(dw-dg));
+
+      console.log("vivo "+this.fitness);
+    } else if (this.reachedGoal) {
+      this.fitness=this.brain.step/1000000;
+      //console.log("steps= "+ this.brain.steps);
+      console.log("morreu no objetivo "+this.fitness);
+    } else if (this.dead) {
+      this.fitness=0;
+      //console.log("morreu por parede "+this.fitness);
+    }
+  }
 
   gimmeBaby() {
     let baby = new Dot();

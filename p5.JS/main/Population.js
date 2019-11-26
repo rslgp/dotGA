@@ -24,14 +24,26 @@ class Population {
   //Atualizar os pontos
   update() {
     for (let i = 0; i < this.dots.length; i++) {
-        this.dots[i].update();
-      }
+      this.dots[i].update();
+    }
   }
 
   //calculo da fitness function
   calculateFitness() {
     for (let i = 0; i < this.dots.length; i++) {
       this.dots[i].calculateFitness();
+    }
+  }
+
+  update2() {
+    for (let i = 0; i < this.dots.length; i++) {
+      this.dots[i].update();
+    }
+  }
+
+  calculateFitness2() {
+    for (let i = 0; i < this.dots.length; i++) {
+      this.dots[i].calculateFitness2();
     }
   }
 
@@ -44,13 +56,13 @@ class Population {
     }
     for (let i = 0; i<this.dots.length; i++) {
       this.dots[i].brain.increaseMoves();
-      }
+    }
     return true;
   }
 
 
   naturalSelection() {
-    
+
     let newDots = []; //proxima geração
     for (let f = 0; f < this.dots.length; f++) {
       newDots.push(new Dot());
@@ -71,6 +83,7 @@ class Population {
     }
     console.log(this.gen);
     this.gen++;
+    console.log("gen = "+ this.gen)
   }
 
   calculateFitnessSum() {
@@ -92,11 +105,11 @@ class Population {
 
     for (let i =0; i < this.dots.length; i++) {
       runningSum += this.dots[i].fitness;
-      if (runningSum > rand) {
+      if (runningSum >= rand) {
         return this.dots[i];
       }
     }
-    return null;
+    return this.dots[0];
   }
 
   //mutaciona os cerebros dos pontos
@@ -120,8 +133,8 @@ class Population {
     this.bestDot = maxIndex;
     //se esse ponto chegou ao final então resete o numero minimo de passos para chegar ao objetivo
     /*if (this.dots[this.bestDot].reachedGoal) {
-      this.minStep = this.dots[this.bestDot].brain.step;
-      // console.log("step: ", minStep);
-    }*/
+     this.minStep = this.dots[this.bestDot].brain.step;
+     // console.log("step: ", minStep);
+     }*/
   }
 }
