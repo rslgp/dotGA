@@ -49,7 +49,7 @@ class Dot {
       fill(0, 255, 0);
       ellipse(this.pos.x, this.pos.y, 8, 8);
     }
-
+     // fill(0);//pra teste
       ellipse(this.pos.x, this.pos.y, 5,5);
       
       
@@ -201,14 +201,14 @@ class Dot {
 
       let constante = 20000;
       this.fitness=this.brain.step/1000;
-      this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/(Math.abs(area - circle)+0.1));
-      this.fitness*=1/(0.1+Math.abs(dw-dg));
+      this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/Math.abs(area - circle));
+      this.fitness*=1/(Math.abs(dw-dg));
 
-       //console.log("vivo "+this.fitness);
+     // console.log("vivo "+this.fitness);
     } else if (this.reachedGoal) {
       this.fitness=this.brain.step/1000000;
       //console.log("steps= "+ this.brain.steps);
-       //console.log("morreu no objetivo "+this.fitness);
+      //console.log("morreu no objetivo "+this.fitness);
     } else if (this.dead) {
       this.fitness=0;
       //console.log("morreu por parede "+this.fitness);

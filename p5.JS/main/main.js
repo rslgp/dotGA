@@ -10,7 +10,7 @@ let rodando = 0;
 if (choice==2) {
   neuronios = 1000;
   QtdDeBixo = 600;
-  mutation = 0.005;
+  mutation = 0.0012;
 } else if (choice==1) {
   QtdDeBixo = 100;
   increaseMovesBy = 5;
