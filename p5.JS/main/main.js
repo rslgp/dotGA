@@ -2,7 +2,7 @@ var QtdDeBixo = 100;
 var increaseMovesBy = 5;
 var neuronios = 5;
 var periodoDeAtualizacaoDaPopulacao=0;
-let choice = 1;
+let choice = 2;
 var mutation =  0.01;
 var Xgoal=300, Ygoal=300;
 let rodando = 0;
@@ -10,7 +10,7 @@ let rodando = 0;
 if (choice==2) {
   neuronios = 500;
   QtdDeBixo = 500;
-  mutation = 0.0012;
+  mutation = 0.01;
 } else if (choice==1) {
   QtdDeBixo = 100;
   increaseMovesBy = 5;

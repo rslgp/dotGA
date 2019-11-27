@@ -17,7 +17,7 @@ class Dot {
 
   //------------------------------------------------------------------------------------
   //draws the dot on screen
-  show() {
+  show() {//FAZER FUNCAO DE SIMILIARIDADE
     //use fitness here as a parameter of color used to paint the dot
     //fill(fitness/2,fitness/3,fitness/4); //maybe change the formulas
     //ellipse(pos.x, pos.y,8,8);//draw circle
@@ -25,7 +25,8 @@ class Dot {
       fill(0, 255, 0);
       ellipse(this.pos.x, this.pos.y, 8, 8);
     } else {
-      fill(0);
+      let rgb = this.brain.getColor();
+      fill(rgb[0],rgb[1],rgb[2]);
       ellipse(this.pos.x, this.pos.y, 4, 4);
     }
   }
@@ -169,8 +170,8 @@ class Dot {
 
       let constante = 20000;
       this.fitness=this.brain.step/1000;
-      this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/Math.abs(area - circle));
-      this.fitness*=1/(Math.abs(dw-dg));
+      this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/(Math.abs(area - circle)+0.1));
+      this.fitness*=1/(0.1+Math.abs(dw-dg));
 
       // console.log("vivo "+this.fitness);
     } else if (this.reachedGoal) {

@@ -49,12 +49,21 @@ class Brain {
     neuronios += increaseMovesBy;
     this.length=neuronios;
     let randomAngle = 0;
+    if(this.length > 3000){ return;}//pra parar de travar o navegador
     for (var i = 0; i< increaseMovesBy; i++) { //Começa incrementando de 5 em 5 
       this.directions.push(new Point());
       randomAngle = Math.random()*6.2830;
       //console.log("mutated angle="+randomAngle);
       this.directions[this.directions.length-1].fromAngle(randomAngle); //PVector.fromAngle
-      //this.randomize();
+
     }
+  }
+  
+  getColor(){
+     let rgb = [0,0,0];
+     
+     
+     
+     return rgb;
   }
 }
