@@ -19,31 +19,24 @@
 
   <!-- This line removes any default padding and style.
        You might only need one of these values set. -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
   <style> body { padding: 0; margin: 0; } </style>
 </head>
 
 <body>
   <h1>dotGA</h1>
   <div class="op">
-    <div>
-      <input class="button" type="button" id="rodar" onClick="rodar()" value="Começar"></button>
-    </div>
-    <div>
+    <div class="sidenav">
+      <input class="button" type="button" id="rodar" onClick="rodar()" value="Começar"></button><br>
       <input class="numberbox" type="number" id="x" min="1" value="300">
       <input class="numberbox" type="number" id="y" min="1" value="300">
-      <input class="button" type="button" id="mudarGoal" onClick="mudarGoal()" value="Mudar Goal"></button>
-    </div>
-    <div>
+      <input class="button" type="button" id="mudarGoal" onClick="mudarGoal()" value="Mudar Goal"></button><br>
       <input class="numberbox" type="number" id="tamPopulacao" min="1" value="100">
-      <input class="button" type="button" id="mudarPopulacao" onClick="mudarPopulacao()" value="Mudar População"></button>
-    </div>
-    <div>
-      <input class="numberbox" type="number" id="movimento" min="1" value="40">
-      <input class="button" type="button" id="mudarMovimento" onClick="mudarMovimento()" value="Mudar Movimento"></button>
-    </div>
-    <div>
+      <input class="button" type="button" id="mudarPopulacao" onClick="mudarPopulacao()" value="Mudar População"></button><br>
+      <input class="numberbox" type="number" id="movimento" min="1" value="5">
+      <input class="button" type="button" id="mudarMovimento" onClick="mudarMovimento()" value="Mudar Movimento"></button><br>
       <input class="numberbox" type="number" id="geracao" min="1" value="3">
-      <input class="button" type="button" id="mudarGeracao" onClick="mudarGeracao()" value="Mudar Geração"></button>
+      <input class="button" type="button" id="mudarGeracao" onClick="mudarGeracao()" value="Mudar Geração"></button><br>
     </div>
   </div>
 </body>
