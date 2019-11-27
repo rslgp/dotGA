@@ -6,7 +6,7 @@ class Dot {
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
     this.brain = new Brain(neuronios);//cerebro vai começar com 5 instruções
-    this.angle = 1;
+    
     this.dead = false;
     this.endedAlive=false;
     this.reachedGoal = false;
@@ -25,10 +25,31 @@ class Dot {
       fill(0, 255, 0);
       ellipse(this.pos.x, this.pos.y, 8, 8);
     } else {
-      //let rgb = this.brain.getColor();
-     // fill(rgb[0],rgb[1],rgb[2]);
-      fill(0);
-      ellipse(this.pos.x, this.pos.y, 4, 4);
+     // let rgb = this.brain.getColor();
+     let fit = this.fitness; 
+     //console.log(fit);
+     if(fit < 60){
+       //console.log("paia");
+       fill(0);
+     }else if(fit < 120){
+       //console.log("marromeno");
+       fill(255,162,89);
+     }else if(fit < 180){
+       //console.log("quase la");
+       fill(254,104,69);
+     }else if(fit < 240){
+       //console.log("prata");
+       fill(196,202,206);
+     }else if(fit < 300){
+       //console.log("azul");
+       fill(77,200,233);
+     }else {
+       //console.log("ouro");
+       fill(255,215,0);
+     }
+      
+
+      ellipse(this.pos.x, this.pos.y, 8,8);
     }
   }
   collide(line) {//TODO
@@ -180,11 +201,11 @@ class Dot {
       this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/(Math.abs(area - circle)+0.1));
       this.fitness*=1/(0.1+Math.abs(dw-dg));
 
-      // console.log("vivo "+this.fitness);
+       //console.log("vivo "+this.fitness);
     } else if (this.reachedGoal) {
       this.fitness=this.brain.step/1000000;
       //console.log("steps= "+ this.brain.steps);
-      // console.log("morreu no objetivo "+this.fitness);
+       //console.log("morreu no objetivo "+this.fitness);
     } else if (this.dead) {
       this.fitness=0;
       //console.log("morreu por parede "+this.fitness);
@@ -194,6 +215,7 @@ class Dot {
   gimmeBaby() {
     let baby = new Dot();
     baby.brain = this.brain.clone();
+    baby.fitness = this.fitness;
     return baby;
   }
 }
