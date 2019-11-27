@@ -118,6 +118,14 @@ function mudarGeracao(){//TODO: VAI BRUNO
 }
 
 function rodar(){
+   Xgoal = document.getElementById('x').value;
+   Ygoal = document.getElementById('y').value;
+   QtdDeBixo = document.getElementById('tamPopulacao').value;
+   //increaseMovesBy = document.getElementById('movimento').value;
+
+   console.log("X e Y do objetivo:", Xgoal, Ygoal);
+   console.log("Tamanho da população:", QtdDeBixo);
+   console.log("Velocidade:", increaseMovesBy);
    rodando^=1; 
    if(rodando){
       test = new Population(QtdDeBixo);

@@ -69,7 +69,7 @@ class Brain {
     //console.log(this.directions);
     let lim1 = Math.floor(n/3);
     let lim2 = Math.floor(n/3+n/3);
-      console.log(rgb);
+      //console.log(rgb);
     for (let i = 0; i<lim1; i++) {
       rgb[0]=(rgb[0]+this.directions[i].angle)%255;
     }

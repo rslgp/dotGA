@@ -5,19 +5,18 @@ div.container {
 h1 {
     font-size: 5vw;
     text-align: center;
-    padding: 3vw;
     position: relative;
 }
 div.op {
     width: 30%;
-    background-color: rgb(5, 199, 199);
+    background-color: #ffffff;
     display: inline-block;
     margin-right: 17vw;
     font-size: 3vw;
     text-align: left;
     padding: 5vw 0vw 5vw 0vw;
     min-width:40vw;
-    float:right;
+    float: right;
 }
 canvas {
     border-style: double;
@@ -25,7 +24,47 @@ canvas {
 }
 .button {
     margin-left: 1vw;
+    text-align: center;
+    padding: 10px 10px;
+    background-color: #4CAF50;
+    border-radius: 4px;
+    border: 2px solid #4CAF50;
+    font-family: 'Roboto Mono', monospace;
+    cursor: pointer;
 }
+
+.button:hover {
+    background-color: #4CAF50;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.sidenav {
+    height: 100%;
+    width: 30%; 
+    position: fixed;
+    z-index: 1; 
+    top: 40%; 
+    right: 3%;
+    overflow-x: hidden; 
+    background-color: #0861c5;
+    padding-top: 20px;
+}
+
+input[type=number] {
+    border-radius: 4px;
+    box-shadow: none;
+    width: 90px;
+    border: none;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+html {
+    font-family: 'Roboto Mono', monospace;
+}
+
 .numberbox {
     margin-left: 1vw;
 }
