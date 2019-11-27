@@ -65,33 +65,4 @@ class Brain {
     }
   }
 
-  getColor() {
-    let rgb = [0, 0, 0];
-    let n = this.directions.length;
-    //console.log(this.directions);
-     //console.log(rgb);
-    let lim1 = Math.floor(n/3);
-    let lim2 = Math.floor(n/3+n/3);
-    
-    for (let i = 0; i<lim1; i++) {
-      rgb[0]=(rgb[0]+Math.floor(this.directions[i].angle))%255;
-      //console.log(rgb[0]);
-    }
-    
-    for (let i = lim1+1; i<lim2; i++) {
-      //console.log((i < n));
-      rgb[1]=(rgb[1]+Math.floor(this.directions[i].angle))%255;
-      
-    }
-    for (let i = lim2+1; i<n; i++) {
-      rgb[2]=(rgb[2]+Math.floor(this.directions[i].angle))%255;
-    }
-    //console.log(rgb);
-    rgb[0]=Math.floor(rgb[0])%255;
-    rgb[1]=Math.floor(rgb[1])%255;
-    rgb[2]=Math.floor(rgb[2])%255;
-    
-   // console.log(rgb);
-    return rgb;
-  }
 }

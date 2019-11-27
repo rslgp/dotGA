@@ -21,36 +21,39 @@ class Dot {
     //use fitness here as a parameter of color used to paint the dot
     //fill(fitness/2,fitness/3,fitness/4); //maybe change the formulas
     //ellipse(pos.x, pos.y,8,8);//draw circle
-    if (this.isBest) {
-      fill(0, 255, 0);
-      ellipse(this.pos.x, this.pos.y, 8, 8);
-    } else {
+    
      // let rgb = this.brain.getColor();
      let fit = this.fitness; 
      //console.log(fit);
      if(fit < 60){
        //console.log("paia");
-       fill(0);
+       fill(0,0,0,51);
      }else if(fit < 120){
        //console.log("marromeno");
-       fill(255,162,89);
+       fill(255,162,89,102);
      }else if(fit < 180){
        //console.log("quase la");
        fill(254,104,69);
      }else if(fit < 240){
        //console.log("prata");
-       fill(196,202,206);
+       fill(145,189,58,153);
      }else if(fit < 300){
        //console.log("azul");
-       fill(77,200,233);
+       fill(77,200,233,204);
      }else {
        //console.log("ouro");
-       fill(255,215,0);
+       fill(255,215,0,255);
      }
       
+    //if (this.isBest) {
+    //  fill(0, 255, 0);
+    //  ellipse(this.pos.x, this.pos.y, 8, 8);
+    //}
 
       ellipse(this.pos.x, this.pos.y, 8,8);
-    }
+      
+      
+    
   }
   collide(line) {//TODO
     function quadrado (x) {
