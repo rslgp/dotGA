@@ -52,13 +52,14 @@ function mouseReleased(event) {
 
 
 function draw() {
+ obstaculos.show();
+  
   if(!rodando){
     return;
   }
   goal = new Point(Xgoal, Ygoal);
   background(255);
   //funciona
-
   obstaculos.show();
 
   //desenhar o objetivo
