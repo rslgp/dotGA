@@ -45,12 +45,12 @@ class Dot {
        fill(255,215,0,255);
      }
       
-    //if (this.isBest) {
-    //  fill(0, 255, 0);
-    //  ellipse(this.pos.x, this.pos.y, 8, 8);
-    //}
+    if (choice==1 && this.isBest) {
+      fill(0, 255, 0);
+      ellipse(this.pos.x, this.pos.y, 8, 8);
+    }
 
-      ellipse(this.pos.x, this.pos.y, 8,8);
+      ellipse(this.pos.x, this.pos.y, 5,5);
       
       
     
