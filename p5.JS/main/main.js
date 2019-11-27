@@ -2,19 +2,20 @@ var QtdDeBixo = 100;
 var increaseMovesBy = 5;
 var neuronios = 5;
 var periodoDeAtualizacaoDaPopulacao=0;
-let choice = 2;
+let choice = 1;
 var mutation =  0.01;
 var Xgoal=300, Ygoal=300;
 let rodando = 0;
 
 if (choice==2) {
-  neuronios = 10;
-  QtdDeBixo = 50;
-  mutation = 0.1;
+  neuronios = 500;
+  QtdDeBixo = 500;
+  mutation = 0.002;
 } else if (choice==1) {
   QtdDeBixo = 100;
   increaseMovesBy = 5;
   mutation = 0.01;
+  neuronios = 50;
 }
 
 var test = new Population(QtdDeBixo);
@@ -45,7 +46,9 @@ function mouseReleased(event) {
   console.log("segundo ponto: "  + mouseX + " " + mouseY);
   x2=mouseX;
   y2=mouseY;
-
+  if(x1<GX1 || x1>GX2 || x2<GX1 || x2>GX2 || y1<GY1 || y1>GY2 || y2<GY1 || y2>GY2){
+     return; 
+  }
   obstaculos.add(new Line([x1, y1], [x2, y2]));
 }
 

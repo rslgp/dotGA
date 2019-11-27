@@ -48,12 +48,14 @@ class Brain {
   }
 
   increaseMoves() {
+   
+    if (this.length > 2000) { 
+      console.log("se passar disso acho que da ruim");
+      return;
+    }//pra parar de travar o navegador
     neuronios += increaseMovesBy;
     this.length=neuronios;
     let randomAngle = 0;
-    if (this.length > 3000) { 
-      return;
-    }//pra parar de travar o navegador
     for (var i = 0; i< increaseMovesBy; i++) { //Começa incrementando de 5 em 5 
       this.directions.push(new Point());
       randomAngle = Math.random()*6.2830;

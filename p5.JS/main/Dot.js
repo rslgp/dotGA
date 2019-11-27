@@ -25,9 +25,9 @@ class Dot {
       fill(0, 255, 0);
       ellipse(this.pos.x, this.pos.y, 8, 8);
     } else {
-      let rgb = this.brain.getColor();
-      fill(rgb[0],rgb[1],rgb[2]);
-     // fill(0);
+      //let rgb = this.brain.getColor();
+     // fill(rgb[0],rgb[1],rgb[2]);
+      fill(0);
       ellipse(this.pos.x, this.pos.y, 4, 4);
     }
   }
@@ -130,11 +130,17 @@ class Dot {
   //--------------------------------------------------------------------------------
   //possivelmente alterar isso
   calculateFitness() {
-    if (this.reachedGoal) {
+    if(this.endedAlive){
+      let distanceGoal = this.pos.dist(goal);
+      this.fitness = this.brain.step*this.brain.step*this.brain.step/distanceGoal;
+    } else if (this.reachedGoal) {
       this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
-      this.fitness = this.brain.step / (distanceGoal*distanceGoal);
+      this.fitness =  this.brain.step *this.brain.step / (distanceGoal)*distanceGoal;
+      if(distanceGoal<100){
+          this.fitness  = this.brain.step *this.brain.step;
+      }
     }
   }
   //-----------------------------------------------------------------------------
