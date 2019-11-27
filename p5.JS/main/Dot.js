@@ -132,7 +132,7 @@ class Dot {
       this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
-      this.fitness = 1.0 / (distanceGoal*distanceGoal);
+      this.fitness = this.brain.step / (distanceGoal*distanceGoal);
     }
   }
   //-----------------------------------------------------------------------------
