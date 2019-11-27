@@ -41,6 +41,12 @@ class Point {
       this.y = Math.sin(lim);
     }
   }
+  
+  getAngle(){
+//ta bugado. ainda n  sei fazer
+   return  Math.atan(this.y,this.x);
+   
+  }
 
   equal(p) {
     return this.x==p.x && this.y==p.y;

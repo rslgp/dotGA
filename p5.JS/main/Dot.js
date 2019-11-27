@@ -6,7 +6,7 @@ class Dot {
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
     this.brain = new Brain(neuronios);//cerebro vai começar com 5 instruções
-
+    this.angle = 1;
     this.dead = false;
     this.endedAlive=false;
     this.reachedGoal = false;
@@ -27,6 +27,7 @@ class Dot {
     } else {
       let rgb = this.brain.getColor();
       fill(rgb[0],rgb[1],rgb[2]);
+     // fill(0);
       ellipse(this.pos.x, this.pos.y, 4, 4);
     }
   }

@@ -8,9 +8,9 @@ var Xgoal=300, Ygoal=300;
 let rodando = 0;
 
 if (choice==2) {
-  neuronios = 500;
-  QtdDeBixo = 500;
-  mutation = 0.01;
+  neuronios = 10;
+  QtdDeBixo = 50;
+  mutation = 0.1;
 } else if (choice==1) {
   QtdDeBixo = 100;
   increaseMovesBy = 5;
