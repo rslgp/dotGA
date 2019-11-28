@@ -1,26 +1,17 @@
-var QtdDeBixo = 100;
-var increaseMovesBy = 5;
-var neuronios = 5;
-var periodoDeAtualizacaoDaPopulacao = 5;
+let QtdDeBixo = 100;
+let increaseMovesBy = 5;
+let neuronios = 5;
+let periodoDeAtualizacaoDaPopulacao = 5;
 let choice = 1;
-var mutation =  0.01;
-var Xgoal=300, Ygoal=300;
+let mutation =  0.01;
+let Xgoal=300, Ygoal=300;
 let rodando = 0;
 
-if (choice==2) {
-  neuronios = 1000;
-  QtdDeBixo = 600;
-  mutation = 0.0013;
-} else if (choice==1) {
-  QtdDeBixo = 100;
-  increaseMovesBy = 5;
-  mutation = 0.01;
-  neuronios = 5;
-}
 
-var test = new Population(QtdDeBixo);
-var goal = new Point(Xgoal, Ygoal);
-var obstaculos = new Lines();
+
+let test = new Population(QtdDeBixo);
+let goal = new Point(Xgoal, Ygoal);
+let obstaculos = new Lines();
 
 let x1, y1, x2, y2;
 //limites do grid, usado no Dot.js no outOfGrid()
@@ -30,7 +21,16 @@ var GX2=600;
 var GY2=600;
 
 function setup() {
-
+if (choice==2) {
+  neuronios = 1000;
+  QtdDeBixo = 600;
+  mutation = 0.0013;
+} else if (choice==1) {
+  QtdDeBixo = 100;
+  increaseMovesBy = 5;
+  mutation = 0.01;
+  neuronios = 50;
+}
   createCanvas(GX2, GY2);
   frameRate(100);
 }
