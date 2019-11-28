@@ -130,7 +130,7 @@ function trocar() {
   QtdDeBixo = refPop.value;
   if (choice==2) {
     neuronios = 500;
-    mutation = 0.0013;
+    mutation = 0.005;
     increaseMovesBy = 10;
   } else if (choice==1) {
     increaseMovesBy = 5;
