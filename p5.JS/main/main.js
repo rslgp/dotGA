@@ -1,7 +1,7 @@
 var QtdDeBixo = 100;
 var increaseMovesBy = 5;
 var neuronios = 5;
-var periodoDeAtualizacaoDaPopulacao=0;
+var periodoDeAtualizacaoDaPopulacao = 5;
 let choice = 1;
 var mutation =  0.01;
 var Xgoal=300, Ygoal=300;
@@ -73,14 +73,17 @@ function draw() {
   ellipse(GX2, GY1, 10, 10);
   ellipse(GX1, GY2, 10, 10);
   ellipse(GX2, GY2, 10, 10);
-
+  
+     fill('#74aaa8');
+     textSize(36);
+      text("Generation: " + test.gen, 50, 50);
 
 
 
   if (test.allDotsDead()) {
     console.log(neuronios);
     console.log(increaseMovesBy);
-    console.log("gen = "+ test.gen);
+    //console.log("gen = "+ test.gen);
     //algoritmo genético
     if (choice==1) {
       test.calculateFitness();
@@ -93,9 +96,10 @@ function draw() {
     //se quaisquer outros pontos ainda está vivo, então atualize e os mostre
 
       test.update();
-  
-    test.show();
+      test.show();
   }
+     
+
 }
 
 //==========================================
