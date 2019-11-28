@@ -1,56 +1,37 @@
-div.container {
-    height: 100%;
-    background: -webkit-linear-gradient(top, #088fad 20%, #00d5ff 100%);
-}
 h1 {
     font-size: 5vw;
-    text-align: center;
-    position: relative;
-}
-div.op {
-    width: 30%;
-    background-color: #ffffff;
-    display: inline-block;
-    margin-right: 17vw;
-    font-size: 3vw;
-    text-align: left;
-    padding: 5vw 0vw 5vw 0vw;
-    min-width:40vw;
-    float: right;
+    text-align: center; 
+    color: #41aaa8; 
 }
 canvas {
-    border-style: double;
     margin-left: 5vw;
 }
 .button {
-    margin-left: 1vw;
     text-align: center;
     padding: 10px 10px;
-    background-color: #4CAF50;
+    background-color: #41aaa8;
+    color: white;
     border-radius: 4px;
-    border: 2px solid #4CAF50;
+    border: 2px solid #41aaa8;
     font-family: 'Roboto Mono', monospace;
     cursor: pointer;
 }
-
 .button:hover {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #41aaa8;
+    color: black;
     font-family: 'Roboto Mono', monospace;
 }
-
 .sidenav {
-    height: 100%;
-    width: 30%; 
     position: fixed;
     z-index: 1; 
-    top: 40%; 
     right: 3%;
+    top:200px;
     overflow-x: hidden; 
-    background-color: #0861c5;
-    padding-top: 20px;
+    background-color: #51dacf;
+    padding: 20px;
+    font-size: 3vw;
+    text-align: left;
 }
-
 input[type=number] {
     border-radius: 4px;
     box-shadow: none;
@@ -60,11 +41,11 @@ input[type=number] {
     box-sizing: border-box;
     font-family: 'Roboto Mono', monospace;
 }
-
 html {
     font-family: 'Roboto Mono', monospace;
+    background: #d2fafb;
 }
-
-.numberbox {
-    margin-left: 1vw;
+canvas {
+    background: white;
+    top: 200px;
 }

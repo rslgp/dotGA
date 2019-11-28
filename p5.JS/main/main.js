@@ -69,10 +69,6 @@ function draw() {
   fill(255, 0, 0);
   ellipse(goal.x, goal.y, 10, 10);
   fill(0, 0, 255);
-  ellipse(GX1, GY1, 10, 10);
-  ellipse(GX2, GY1, 10, 10);
-  ellipse(GX1, GY2, 10, 10);
-  ellipse(GX2, GY2, 10, 10);
 
 
 
