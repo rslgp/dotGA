@@ -54,8 +54,10 @@ class Population {
         return false;
       }
     }
-    for (let i = 0; i<this.dots.length; i++) {
-      this.dots[i].brain.increaseMoves();
+    if (this.gen % periodoDeAtualizacaoDaPopulacao == 0) {
+      for (let i = 0; i<this.dots.length; i++) {
+        this.dots[i].brain.increaseMoves();
+      }
     }
     return true;
   }
@@ -83,7 +85,6 @@ class Population {
     }
     //console.log(this.gen);
     this.gen++;
-    
   }
 
   calculateFitnessSum() {

@@ -6,7 +6,7 @@ class Dot {
     this.vel = new Point(0, 0);
     this.acc = new Point(0, 0);
     this.brain = new Brain(neuronios);//cerebro vai começar com 5 instruções
-    
+
     this.dead = false;
     this.endedAlive=false;
     this.reachedGoal = false;
@@ -21,39 +21,35 @@ class Dot {
     //use fitness here as a parameter of color used to paint the dot
     //fill(fitness/2,fitness/3,fitness/4); //maybe change the formulas
     //ellipse(pos.x, pos.y,8,8);//draw circle
-    
-     // let rgb = this.brain.getColor();
-     let fit = this.fitness; 
-     //console.log(fit);
-     if(fit < 60){
-       //console.log("paia");
-       fill(0,0,0,51);
-     }else if(fit < 120){
-       //console.log("marromeno");
-       fill(255,162,89,102);
-     }else if(fit < 180){
-       //console.log("quase la");
-       fill(254,104,69);
-     }else if(fit < 240){
-       //console.log("prata");
-       fill(145,189,58,153);
-     }else if(fit < 300){
-       //console.log("azul");
-       fill(77,200,233,204);
-     }else {
-       //console.log("ouro");
-       fill(255,215,0,255);
-     }
-      
+
+    // let rgb = this.brain.getColor();
+    let fit = this.fitness; 
+    //console.log(fit);
+    if (fit < 60) {
+      //console.log("paia");
+      fill(0, 0, 0, 51);
+    } else if (fit < 120) {
+      //console.log("marromeno");
+      fill(255, 162, 89, 102);
+    } else if (fit < 180) {
+      //console.log("quase la");
+      fill(254, 104, 69);
+    } else if (fit < 240) {
+      //console.log("prata");
+      fill(145, 189, 58, 153);
+    } else if (fit < 300) {
+      //console.log("azul");
+      fill(77, 200, 233, 204);
+    } else {
+      //console.log("ouro");
+      fill(255, 215, 0, 255);
+    }
+    ellipse(this.pos.x, this.pos.y, 5, 5);
     if (choice==1 && this.isBest) {
       fill(0, 255, 0);
       ellipse(this.pos.x, this.pos.y, 8, 8);
     }
-     // fill(0);//pra teste
-      ellipse(this.pos.x, this.pos.y, 5,5);
-      
-      
-    
+    // fill(0);//pra teste
   }
   collide(line) {//TODO
     function quadrado (x) {
@@ -112,6 +108,7 @@ class Dot {
       this.brain.step++;
     } else {//if directions ended
       if (choice==1) {
+        this.endedAlive=true;//morre vivo
         this.dead = true;
       } else if (choice==2) {
         this.endedAlive=true;//morre vivo
@@ -154,17 +151,20 @@ class Dot {
   //--------------------------------------------------------------------------------
   //possivelmente alterar isso
   calculateFitness() {
-    if(this.endedAlive){
+    if (this.endedAlive) {
       let distanceGoal = this.pos.dist(goal);
-      this.fitness = this.brain.step*this.brain.step*this.brain.step/distanceGoal;
+      this.fitness = (this.brain.step*this.brain.step*this.brain.step/distanceGoal*2)/50;
+      console.log("morreu vivo "+this.fitness);
     } else if (this.reachedGoal) {
-      this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
+      this.fitness = 1000.0/Math.pow(this.brain.step, 1/5);
+      console.log("morreu no objetivo "+this.fitness);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
-      this.fitness =  this.brain.step *this.brain.step / (distanceGoal)*distanceGoal;
-      if(distanceGoal<100){
-          this.fitness  = this.brain.step *this.brain.step;
+      this.fitness =  0;
+      if (distanceGoal<100) {
+        this.fitness  = this.brain.step *this.brain.step;
       }
+      console.log("morreu por parede "+this.fitness);
     }
   }
   //-----------------------------------------------------------------------------
@@ -204,14 +204,14 @@ class Dot {
       this.fitness*=constante*(Math.sqrt(dw*dw*dg*dg*dmin*dmin)/(Math.sqrt(dmax*dmax)))*(1/Math.abs(area - circle));
       this.fitness*=1/(Math.abs(dw-dg));
 
-     // console.log("vivo "+this.fitness);
+       console.log("morreu vivo "+this.fitness);
     } else if (this.reachedGoal) {
       this.fitness=this.brain.step/1000000;
       //console.log("steps= "+ this.brain.steps);
-      //console.log("morreu no objetivo "+this.fitness);
+      console.log("morreu no objetivo "+this.fitness);
     } else if (this.dead) {
       this.fitness=0;
-      //console.log("morreu por parede "+this.fitness);
+      console.log("morreu por parede "+this.fitness);
     }
   }
 

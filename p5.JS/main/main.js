@@ -1,8 +1,8 @@
 var QtdDeBixo = 100;
 var increaseMovesBy = 5;
 var neuronios = 5;
-var periodoDeAtualizacaoDaPopulacao=0;
-let choice = 2;
+var periodoDeAtualizacaoDaPopulacao = 5;
+let choice = 1;
 var mutation =  0.01;
 var Xgoal=300, Ygoal=300;
 let rodando = 0;
@@ -10,12 +10,12 @@ let rodando = 0;
 if (choice==2) {
   neuronios = 1000;
   QtdDeBixo = 600;
-  mutation = 0.0012;
+  mutation = 0.0013;
 } else if (choice==1) {
   QtdDeBixo = 100;
   increaseMovesBy = 5;
   mutation = 0.01;
-  neuronios = 50;
+  neuronios = 5;
 }
 
 var test = new Population(QtdDeBixo);
@@ -70,13 +70,16 @@ function draw() {
   ellipse(goal.x, goal.y, 10, 10);
   fill(0, 0, 255);
 
+  fill('#74aaa8');
+  textSize(36);
+  text("Generation: " + test.gen, 50, 50);
 
 
 
   if (test.allDotsDead()) {
     console.log(neuronios);
     console.log(increaseMovesBy);
-    console.log("gen = "+ test.gen);
+    //console.log("gen = "+ test.gen);
     //algoritmo genético
     if (choice==1) {
       test.calculateFitness();
@@ -88,13 +91,11 @@ function draw() {
   } else {
     //se quaisquer outros pontos ainda está vivo, então atualize e os mostre
 
-    if (choice==1) {
       test.update();
-    } else if (choice==2) {
-      test.update2();
-    }
-    test.show();
+      test.show();
   }
+     
+
 }
 
 //==========================================
