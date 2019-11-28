@@ -17,7 +17,6 @@ class Brain {
       randomAngle = Math.random()*6.2830;//2*PI
       //console.log("angle1="+randomAngle);
       this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
-      this.directions[i].angle=Math.floor(randomAngle);
     }
     //console.log("Houve randomização!")
   }
@@ -41,7 +40,7 @@ class Brain {
         randomAngle = Math.random()*6.2830;
         //console.log("mutated angle="+randomAngle);
         this.directions[i].fromAngle(randomAngle); //PVector.fromAngle
-        this.directions[i].angle=Math.floor(randomAngle);
+ 
       }
     }
     //console.log("Mutacionando com taxa de mutação:", mutationRate);
@@ -61,7 +60,7 @@ class Brain {
       randomAngle = Math.random()*6.2830;
       //console.log("mutated angle="+randomAngle);
       this.directions[this.directions.length-1].fromAngle(randomAngle); //PVector.fromAngle
-      this.directions[i].angle=Math.floor(randomAngle);
+     
     }
   }
 

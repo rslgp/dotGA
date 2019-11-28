@@ -2,7 +2,6 @@ class Point {
   constructor(xx, yy) {
     this.x = xx;
     this.y = yy;
-    this.angle = 1;
   }
 
   add(otherPv) {//pra adicionar vel na pos do dot
