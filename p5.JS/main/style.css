@@ -29,6 +29,7 @@ canvas {
     overflow-x: hidden; 
     background-color: #51dacf;
     padding: 20px;
+    padding-top: 4px !important;
     font-size: 3vw;
     text-align: left;
 }
@@ -48,4 +49,21 @@ html {
 canvas {
     background: white;
     top: 200px;
+}
+.radio {
+    padding: 11px; 
+    padding-left: 6px;
+    padding-right: 6px;
+    text-align: left;
+    background-color: #41aaa8;
+    color: white;
+    border-radius: 4px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    display: inline-block;
+}
+.radio:hover {
+    background-color: #41aaa8;
+    color: black;
+    font-family: 'Roboto Mono', monospace;
 }
