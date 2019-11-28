@@ -27,22 +27,22 @@ class Dot {
     //console.log(fit);
     if (fit < 60) {
       //console.log("paia");
-      fill(0, 0, 0, 51);
+      fill('#eb7070');
     } else if (fit < 120) {
       //console.log("marromeno");
-      fill(255, 162, 89, 102);
+      fill('#eb7070');
     } else if (fit < 180) {
       //console.log("quase la");
-      fill(254, 104, 69);
+      fill('#fec771');
     } else if (fit < 240) {
       //console.log("prata");
-      fill(145, 189, 58, 153);
+      fill('#fec771');
     } else if (fit < 300) {
       //console.log("azul");
-      fill(77, 200, 233, 204);
+      fill('#e6e56c');
     } else {
       //console.log("ouro");
-      fill(255, 215, 0, 255);
+      fill('#64e291');
     }
     ellipse(this.pos.x, this.pos.y, 5, 5);
     if (choice==1 && this.isBest) {

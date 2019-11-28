@@ -21,7 +21,7 @@ var GX2=600;
 var GY2=600;
 
 function setup() {
-
+  trocar();
   createCanvas(GX2, GY2);
   frameRate(100);
 }
@@ -57,9 +57,9 @@ function draw() {
   obstaculos.show();
 
   //desenhar o objetivo
-  fill(255, 0, 0);
+  fill('#51dacf');
   ellipse(goal.x, goal.y, 10, 10);
-  fill(0, 0, 255);
+  
 
   fill('#74aaa8');
   textSize(36);
