@@ -20,14 +20,26 @@ var GY1=0;
 var GX2=600;
 var GY2=600;
 
+//referencias pra otimizar
+let refXgoal;
+let refYgoal;
+let refPop;
+let refPeriodo;
+let refChoice;
+
 function setup() {
+  refXgoal =  document.getElementById('x');
+  refYgoal =  document.getElementById('y');
+  refPop = document.getElementById('tamPopulacao');
+  refPeriodo = document.getElementById('geracao');
+  refChoice = document.getElementById("dale1");
   trocar();
   createCanvas(GX2, GY2);
   frameRate(400);
 }
 
 function mousePressed(event) {
-  console.log(event + "1");
+  //console.log(event + "1");
   console.log("primeiro ponto: "  + mouseX + " " + mouseY);
   x1=mouseX;
   y1=mouseY;
@@ -68,8 +80,8 @@ function draw() {
 
 
   if (test.allDotsDead()) {
-    console.log(neuronios);
-    console.log(increaseMovesBy);
+   // console.log(neuronios);
+    console.log("increase moves by" +increaseMovesBy);
     //console.log("gen = "+ test.gen);
     //algoritmo genético
     if (choice==1) {
@@ -90,13 +102,13 @@ function draw() {
 //==========================================
 
 function mudarGoal () {
-  Xgoal = document.getElementById('x').value;
-  Ygoal = document.getElementById('y').value;
+  Xgoal = refXgoal.value;
+  Ygoal = refYgoal.value;
   // console.log(goal);
 }
 
 function mudarPopulacao() {
-  QtdDeBixo = document.getElementById('tamPopulacao').value;
+  QtdDeBixo = refPop.value;
 }
 
 function mudarMovimento() {//isso trava tudo
@@ -104,18 +116,18 @@ function mudarMovimento() {//isso trava tudo
 }
 
 function mudarGeracao() {
-  periodoDeAtualizacaoDaPopulacao=document.getElementById('geracao').value;
+  periodoDeAtualizacaoDaPopulacao=refPeriodo.value;
 }
 
 function trocar() {
-  let berg = document.getElementById("dale1").checked;
+  let berg = refChoice.checked;
   if (berg) {
     choice=1;
   } else {
     choice=2;
   }
   console.log("choice ="+choice);
-  QtdDeBixo = document.getElementById('tamPopulacao').value;
+  QtdDeBixo = refPop.value;
   if (choice==2) {
     neuronios = 500;
     mutation = 0.0013;
@@ -130,7 +142,7 @@ function trocar() {
 
 function rodar() {
   mudarGoal ();
-  QtdDeBixo = document.getElementById('tamPopulacao').value;
+  QtdDeBixo = refPop.value;
   trocar();
   //increaseMovesBy = document.getElementById('movimento').value;
 
