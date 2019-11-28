@@ -2,7 +2,7 @@ let QtdDeBixo = 100;
 let increaseMovesBy = 5;
 let neuronios = 5;
 let periodoDeAtualizacaoDaPopulacao = 5;
-let choice = 1;
+let choice = 1 ;
 let mutation =  0.01;
 let Xgoal=300, Ygoal=300;
 let rodando = 0;
@@ -21,16 +21,7 @@ var GX2=600;
 var GY2=600;
 
 function setup() {
-if (choice==2) {
-  neuronios = 1000;
-  QtdDeBixo = 600;
-  mutation = 0.0013;
-} else if (choice==1) {
-  QtdDeBixo = 100;
-  increaseMovesBy = 5;
-  mutation = 0.01;
-  neuronios = 50;
-}
+
   createCanvas(GX2, GY2);
   frameRate(100);
 }
@@ -108,28 +99,47 @@ function mudarPopulacao() {
   QtdDeBixo = document.getElementById('tamPopulacao').value;
 }
 
-function mudarMovimento() {
+function mudarMovimento() {//isso trava tudo
   increaseMovesBy = document.getElementById('movimento').value;
 }
 
-function mudarGeracao() {//TODO: VAI BRUNO
+function mudarGeracao() {
   periodoDeAtualizacaoDaPopulacao=document.getElementById('geracao').value;
-  ;
+}
+
+function trocar() {
+  let berg = document.getElementById("dale1").checked;
+  if (berg) {
+    choice=1;
+  } else {
+    choice=2;
+  }
+  console.log("choice ="+choice);
+  if (choice==2) {
+    neuronios = 1000;
+    QtdDeBixo = 600;
+    mutation = 0.0013;
+  } else if (choice==1) {
+    QtdDeBixo = 100;
+    increaseMovesBy = 5;
+    mutation = 0.01;
+    neuronios = 50;
+  }
+  rodando=0;
 }
 
 function rodar() {
   Xgoal = document.getElementById('x').value;
   Ygoal = document.getElementById('y').value;
   QtdDeBixo = document.getElementById('tamPopulacao').value;
+  trocar();
   //increaseMovesBy = document.getElementById('movimento').value;
 
   console.log("X e Y do objetivo:", Xgoal, Ygoal);
   console.log("Tamanho da população:", QtdDeBixo);
-  console.log("Velocidade:", increaseMovesBy);
+  console.log("Velocidade de incremento:", increaseMovesBy);
   rodando^=1; 
   if (rodando) {
-    neuronios = 5;
     test = new Population(QtdDeBixo);
-
   }
 }

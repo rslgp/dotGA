@@ -26,8 +26,8 @@
 <body>
   <h1>dotGA</h1>
     <div class="sidenav">
-      <div class="radio"><input type="radio" name="ff" value="1"> Fitness Function 1<br></div>
-      <div class="radio"><input type="radio" name="ff" value="2"> Fitness Function 2<br></div> 
+      <div class="radio"><input type="radio" name="ff" id="dale1" onchange="trocar()" value="1"> Fitness Function 1<br></div>
+      <div class="radio"><input type="radio" name="ff" id="dale2" onchange="trocar()" value="2"> Fitness Function 2<br></div> 
 
       <input class="button" type="button" id="rodar" onClick="rodar()" value="Começar!"></button><br> 
       <input class="numberbox" type="number" id="x" min="1" value="300">
@@ -35,10 +35,10 @@
       <input class="button" type="button" id="mudarGoal" onClick="mudarGoal()" value="Mudar Goal"></button><br>
       <input class="numberbox" type="number" id="tamPopulacao" min="1" value="100">
       <input class="button" type="button" id="mudarPopulacao" onClick="mudarPopulacao()" value="Mudar População"></button><br>
-      <input class="numberbox" type="number" id="movimento" min="1" value="5">
-      <input class="button" type="button" id="mudarMovimento" onClick="mudarMovimento()" value="Mudar Movimento"></button><br>
+      <!-- <input class="numberbox" type="number" id="movimento" min="1" value="5"> -->
+      <!-- <input class="button" type="button" id="mudarMovimento" onClick="mudarMovimento()" value="Mudar Incremento"></button><br> -->
       <input class="numberbox" type="number" id="geracao" min="1" value="5">
-      <input class="button" type="button" id="mudarGeracao" onClick="mudarGeracao()" value="Mudar Geração"></button><br>
+      <input class="button" type="button" id="mudarGeracao" onClick="mudarGeracao()" value="Mudar Periodo de aumento de passos"></button><br>
     </div>
 </body>
 </html>
