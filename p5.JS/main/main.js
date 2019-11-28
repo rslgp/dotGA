@@ -23,7 +23,7 @@ var GY2=600;
 function setup() {
   trocar();
   createCanvas(GX2, GY2);
-  frameRate(100);
+  frameRate(400);
 }
 
 function mousePressed(event) {
@@ -59,7 +59,7 @@ function draw() {
   //desenhar o objetivo
   fill('#51dacf');
   ellipse(goal.x, goal.y, 10, 10);
-  
+
 
   fill('#74aaa8');
   textSize(36);
@@ -115,22 +115,21 @@ function trocar() {
     choice=2;
   }
   console.log("choice ="+choice);
+  QtdDeBixo = document.getElementById('tamPopulacao').value;
   if (choice==2) {
-    neuronios = 1000;
-    QtdDeBixo = 600;
+    neuronios = 500;
     mutation = 0.0013;
+    increaseMovesBy = 10;
   } else if (choice==1) {
-    QtdDeBixo = 100;
     increaseMovesBy = 5;
-    mutation = 0.01;
-    neuronios = 50;
+    mutation = 0.1;
+    neuronios = 10;
   }
   rodando=0;
 }
 
 function rodar() {
-  Xgoal = document.getElementById('x').value;
-  Ygoal = document.getElementById('y').value;
+  mudarGoal ();
   QtdDeBixo = document.getElementById('tamPopulacao').value;
   trocar();
   //increaseMovesBy = document.getElementById('movimento').value;
