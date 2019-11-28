@@ -46,8 +46,8 @@ function mouseReleased(event) {
   console.log("segundo ponto: "  + mouseX + " " + mouseY);
   x2=mouseX;
   y2=mouseY;
-  if(x1<GX1 || x1>GX2 || x2<GX1 || x2>GX2 || y1<GY1 || y1>GY2 || y2<GY1 || y2>GY2){
-     return; 
+  if (x1<GX1 || x1>GX2 || x2<GX1 || x2>GX2 || y1<GY1 || y1>GY2 || y2<GY1 || y2>GY2) {
+    return;
   }
   obstaculos.add(new Line([x1, y1], [x2, y2]));
 }
@@ -55,9 +55,9 @@ function mouseReleased(event) {
 
 
 function draw() {
- obstaculos.show();
-  
-  if(!rodando){
+  obstaculos.show();
+
+  if (!rodando) {
     return;
   }
   goal = new Point(Xgoal, Ygoal);
@@ -91,44 +91,45 @@ function draw() {
   } else {
     //se quaisquer outros pontos ainda está vivo, então atualize e os mostre
 
-      test.update();
-      test.show();
+    test.update();
+    test.show();
   }
-     
-
 }
 
 //==========================================
 
-function mudarGoal (){
+function mudarGoal () {
   Xgoal = document.getElementById('x').value;
   Ygoal = document.getElementById('y').value;
- // console.log(goal);
+  // console.log(goal);
 }
 
-function mudarPopulacao(){
+function mudarPopulacao() {
   QtdDeBixo = document.getElementById('tamPopulacao').value;
 }
 
-function mudarMovimento(){
+function mudarMovimento() {
   increaseMovesBy = document.getElementById('movimento').value;
 }
 
-function mudarGeracao(){//TODO: VAI BRUNO
-  periodoDeAtualizacaoDaPopulacao=document.getElementById('geracao').value;;
+function mudarGeracao() {//TODO: VAI BRUNO
+  periodoDeAtualizacaoDaPopulacao=document.getElementById('geracao').value;
+  ;
 }
 
-function rodar(){
-   Xgoal = document.getElementById('x').value;
-   Ygoal = document.getElementById('y').value;
-   QtdDeBixo = document.getElementById('tamPopulacao').value;
-   //increaseMovesBy = document.getElementById('movimento').value;
+function rodar() {
+  Xgoal = document.getElementById('x').value;
+  Ygoal = document.getElementById('y').value;
+  QtdDeBixo = document.getElementById('tamPopulacao').value;
+  //increaseMovesBy = document.getElementById('movimento').value;
 
-   console.log("X e Y do objetivo:", Xgoal, Ygoal);
-   console.log("Tamanho da população:", QtdDeBixo);
-   console.log("Velocidade:", increaseMovesBy);
-   rodando^=1; 
-   if(rodando){
-      test = new Population(QtdDeBixo);
-   }
+  console.log("X e Y do objetivo:", Xgoal, Ygoal);
+  console.log("Tamanho da população:", QtdDeBixo);
+  console.log("Velocidade:", increaseMovesBy);
+  rodando^=1; 
+  if (rodando) {
+    neuronios = 5;
+    test = new Population(QtdDeBixo);
+
+  }
 }
