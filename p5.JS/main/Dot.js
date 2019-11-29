@@ -151,19 +151,11 @@ class Dot {
   //--------------------------------------------------------------------------------
   //possivelmente alterar isso
   calculateFitness() {
-    if (this.endedAlive) {
-      let distanceGoal = this.pos.dist(goal);
-      this.fitness = (this.brain.step*this.brain.step/distanceGoal*2)/100;
-      console.log("morreu vivo "+this.fitness);
-    } else if (this.reachedGoal) {
-      //this.fitness = 1000.0/Math.pow(this.brain.step, 1/5);
-      this.fitness = 1.0/16.0 + 10000000.0/(this.brain.step * this.brain.step);
-      console.log("morreu no objetivo "+this.fitness);
+    if (this.reachedGoal) {
+      this.fitness = 1.0/16.0 + 10000.0/(this.brain.step*this.brain.step);
     } else {//didnt reached goal
       let distanceGoal = this.pos.dist(goal);
-      this.fitness =  0;
-     
-      console.log("morreu por parede "+this.fitness);
+      this.fitness = 1.0 / (distanceGoal*distanceGoal);
     }
   }
   //-----------------------------------------------------------------------------
